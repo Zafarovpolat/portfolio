@@ -354,6 +354,61 @@ function setupTweaks3() {
   document.getElementById('tw3-spark').checked = tweaks3.spark;
 }
 
+// Rotating chip (alive / instant / crisp ...): width + translateY stay in sync
+// so the pill hugs the current word instead of being stuck at the widest one.
+function setupChipRotator3() {
+  const chip = document.querySelector('.chip-inline');
+  if (!chip) return;
+  const stack = chip.querySelector('.ci-stack');
+  if (!stack) return;
+  const words = [...stack.children];
+  if (!words.length) return;
+
+  // Off-screen measurer in chip context (inherits font, size, weight)
+  const probe = document.createElement('span');
+  probe.style.cssText = 'position:absolute;left:-9999px;top:-9999px;visibility:hidden;white-space:nowrap;';
+  chip.appendChild(probe);
+
+  let widths = [];
+  const measure = () => {
+    const cs = getComputedStyle(chip);
+    const padX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+    widths = words.map(w => {
+      probe.textContent = w.textContent;
+      return probe.getBoundingClientRect().width + padX;
+    });
+  };
+  measure();
+
+  let i = 0;
+  const apply = () => {
+    chip.style.setProperty('--ci-w', widths[i] + 'px');
+    stack.style.transform = `translateY(-${i}em)`;
+  };
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) {
+    apply();
+    return;
+  }
+
+  apply();
+  setInterval(() => {
+    i = (i + 1) % words.length;
+    apply();
+  }, 2000);
+
+  // Re-measure on viewport resize since the chip font-size is responsive (clamp/vw)
+  let rT;
+  window.addEventListener('resize', () => {
+    clearTimeout(rT);
+    rT = setTimeout(() => {
+      measure();
+      apply();
+    }, 100);
+  });
+}
+
 window.addEventListener('load', () => {
   setupCursor3();
   setupNav3();
@@ -361,4 +416,5 @@ window.addEventListener('load', () => {
   setupDemoParallax();
   setupAI3();
   setupTweaks3();
+  setupChipRotator3();
 });
