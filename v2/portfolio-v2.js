@@ -215,9 +215,15 @@ function setupProcAnim() {
     opacity: 0, y: 40, duration: 0.7, stagger: 0.12, ease: 'power3.out',
     scrollTrigger: { trigger: '.compare-grid', start: 'top 85%', once: true }
   });
-  gsap.from('.c2-card', {
-    opacity: 0, y: 20, duration: 0.5, stagger: 0.05, ease: 'power2.out',
-    scrollTrigger: { trigger: '.c2-cards', start: 'top 90%', once: true }
+  // c2-card has [data-magnet] which owns the transform via quickTo. Avoid
+  // tweening the same transform here — opacity-only fade-in keeps the reveal
+  // clean and doesn't fight the magnet effect.
+  gsap.set('.c2-card', { opacity: 0 });
+  ScrollTrigger.create({
+    trigger: '.c2-cards', start: 'top 90%', once: true,
+    onEnter: () => gsap.to('.c2-card', {
+      opacity: 1, duration: 0.5, stagger: 0.05, ease: 'power2.out'
+    })
   });
 }
 

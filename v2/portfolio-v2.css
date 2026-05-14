@@ -357,11 +357,14 @@ section { position: relative; z-index: 1; }
 .ticker2-track {
   display: flex; gap: 40px;
   white-space: nowrap;
+  width: max-content;
+  will-change: transform;
   animation: t2 40s linear infinite;
   font-family: var(--font-serif);
   font-style: italic;
   font-size: clamp(40px, 6vw, 80px);
 }
+.ticker2-track:hover { animation-play-state: paused; }
 .ticker2-track em { color: var(--accent); font-style: normal; align-self: center; }
 @keyframes t2 { to { transform: translateX(-50%); } }
 
