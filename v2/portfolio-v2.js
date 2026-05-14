@@ -35,22 +35,39 @@ function splitChars(el) {
 function setupCursor2() {
   const c = document.getElementById('cursor2');
   if (!c) return;
+  if (matchMedia('(max-width: 900px)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
   let mx = innerWidth/2, my = innerHeight/2, cx = mx, cy = my;
-  window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  let settled = false;
+  window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; settled = false; }, { passive: true });
+
+  // Single ticker loop drives the spring; pause once it settles to save CPU
   gsap.ticker.add(() => {
-    cx += (mx-cx)*0.2; cy += (my-cy)*0.2;
-    c.style.transform = `translate(${cx}px, ${cy}px)`;
+    if (settled) return;
+    const dx = mx - cx, dy = my - cy;
+    cx += dx * 0.2; cy += dy * 0.2;
+    c.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
+    if (Math.abs(dx) < 0.1 && Math.abs(dy) < 0.1) settled = true;
   });
-  document.querySelectorAll('a, button, [data-magnet]').forEach(el => {
+
+  const hovEls = document.querySelectorAll('a, button, [data-magnet]');
+  hovEls.forEach(el => {
     el.addEventListener('mouseenter', () => c.classList.add('hover'));
     el.addEventListener('mouseleave', () => c.classList.remove('hover'));
   });
+
+  // Magnet effect — use quickTo for high-frequency updates instead of new tween per event
   document.querySelectorAll('[data-magnet]').forEach(el => {
+    const setX = gsap.quickTo(el, 'x', { duration: 0.4, ease: 'power3' });
+    const setY = gsap.quickTo(el, 'y', { duration: 0.4, ease: 'power3' });
     el.addEventListener('mousemove', e => {
       const r = el.getBoundingClientRect();
-      gsap.to(el, { x: (e.clientX - r.left - r.width/2)*0.2, y: (e.clientY - r.top - r.height/2)*0.2, duration: 0.4 });
+      setX((e.clientX - r.left - r.width/2) * 0.2);
+      setY((e.clientY - r.top - r.height/2) * 0.2);
     });
-    el.addEventListener('mouseleave', () => gsap.to(el, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1,0.4)" }));
+    el.addEventListener('mouseleave', () => {
+      gsap.to(el, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1,0.4)' });
+    });
   });
 }
 
@@ -91,45 +108,70 @@ function setupReveals2() {
 function setupStageParallax() {
   const stage = document.querySelector('.hero2-stage');
   if (!stage) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  gsap.to('.stage-main', {
-    y: -60,
-    scrollTrigger: { trigger: stage, start: "top 80%", end: "bottom top", scrub: 1 }
-  });
-  gsap.to('.chip-1', {
-    y: -100, x: 30,
-    scrollTrigger: { trigger: stage, start: "top 80%", end: "bottom top", scrub: 1 }
-  });
-  gsap.to('.chip-2', {
-    y: -40, x: -20,
-    scrollTrigger: { trigger: stage, start: "top 80%", end: "bottom top", scrub: 1 }
-  });
-  gsap.to('.chip-3', {
-    y: -120, x: 40,
-    scrollTrigger: { trigger: stage, start: "top 80%", end: "bottom top", scrub: 1.5 }
+  const stageMain = document.querySelector('.stage-main');
+  const chip1 = document.querySelector('.chip-1');
+  const chip2 = document.querySelector('.chip-2');
+  const chip3 = document.querySelector('.chip-3');
+  if (!stageMain) return;
+
+  // Light scroll parallax — single scrub trigger reused across targets
+  gsap.to(stageMain, {
+    y: -40,
+    scrollTrigger: { trigger: stage, start: 'top 80%', end: 'bottom top', scrub: 1 }
   });
 
-  // Also subtle mouse-parallax
+  // High-frequency mouse parallax via quickTo (cheap; only schedules one tween)
+  const ease = 'power2.out';
+  const setRY = gsap.quickTo(stageMain, 'rotateY', { duration: 0.6, ease });
+  const setRX = gsap.quickTo(stageMain, 'rotateX', { duration: 0.6, ease });
+  gsap.set(stageMain, { transformPerspective: 1200, transformOrigin: 'center center' });
+
+  const mk = (el) => el ? {
+    x: gsap.quickTo(el, 'x', { duration: 0.8, ease }),
+    y: gsap.quickTo(el, 'y', { duration: 0.8, ease })
+  } : null;
+  const c1 = mk(chip1), c2 = mk(chip2), c3 = mk(chip3);
+
+  let nx = 0, ny = 0, raf = 0;
+  const flush = () => {
+    raf = 0;
+    setRY(nx * 6); setRX(-ny * 4);
+    if (c1) { c1.x(nx * 30); c1.y(ny * 20); }
+    if (c2) { c2.x(-nx * 20); c2.y(-ny * 16); }
+    if (c3) { c3.x(nx * 36); c3.y(ny * 22); }
+  };
+
   stage.addEventListener('mousemove', (e) => {
     const r = stage.getBoundingClientRect();
-    const x = (e.clientX - r.left - r.width/2) / r.width;
-    const y = (e.clientY - r.top - r.height/2) / r.height;
-    gsap.to('.stage-main', { rotateY: x * 6, rotateX: -y * 4, duration: 0.6, transformPerspective: 1200 });
-    gsap.to('.chip-1', { x: x * 30, y: y * 20, duration: 0.8 });
-    gsap.to('.chip-2', { x: -x * 20, y: -y * 16, duration: 0.8 });
-    gsap.to('.chip-3', { x: x * 36, y: y * 22, duration: 0.8 });
-  });
+    nx = (e.clientX - r.left - r.width / 2) / r.width;
+    ny = (e.clientY - r.top - r.height / 2) / r.height;
+    if (!raf) raf = requestAnimationFrame(flush);
+  }, { passive: true });
   stage.addEventListener('mouseleave', () => {
-    gsap.to('.stage-main', { rotateY: 0, rotateX: 0, duration: 0.8 });
-    gsap.to('.chip-1, .chip-2, .chip-3', { x: 0, y: 0, duration: 0.8 });
+    nx = 0; ny = 0;
+    if (!raf) raf = requestAnimationFrame(flush);
   });
 }
 
 // ---------- Soft blob drift ----------
 function animateBlobs() {
-  gsap.to('.b1', { x: 120, y: 80, duration: 14, repeat: -1, yoyo: true, ease: "sine.inOut" });
-  gsap.to('.b2', { x: -100, y: 60, duration: 16, repeat: -1, yoyo: true, ease: "sine.inOut" });
-  gsap.to('.b3', { x: 140, y: -80, duration: 18, repeat: -1, yoyo: true, ease: "sine.inOut" });
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // Pause blob/grain animations when the hero is offscreen so the rest of the
+  // page doesn't pay for them while scrolling.
+  const blobs = gsap.timeline({ repeat: -1, yoyo: true, defaults: { ease: 'sine.inOut' } })
+    .to('.b1', { x: 120, y: 80, duration: 14 }, 0)
+    .to('.b2', { x: -100, y: 60, duration: 16 }, 0)
+    .to('.b3', { x: 140, y: -80, duration: 18 }, 0);
+
+  const hero = document.querySelector('.hero2');
+  if (hero && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      for (const en of entries) en.isIntersecting ? blobs.play() : blobs.pause();
+    }, { rootMargin: '200px' });
+    io.observe(hero);
+  }
 }
 
 // ---------- Counters ----------
@@ -149,27 +191,33 @@ function setupCounters2() {
   });
 }
 
-// ---------- Process cards slide-in ----------
+// ---------- Section reveals ----------
 function setupProcAnim() {
-  gsap.from('.proc-card', {
-    opacity: 0, y: 40, duration: 0.7, stagger: 0.1, ease: "power3.out",
-    scrollTrigger: { trigger: '.proc-grid', start: "top 80%" }
+  // Each project card has its own trigger so individual cards fade in as they
+  // enter the viewport (instead of waiting for the whole list to be near the
+  // top, which made the second/third cards feel delayed).
+  document.querySelectorAll('.p2').forEach(card => {
+    gsap.from(card, {
+      opacity: 0, y: 40, duration: 0.6, ease: 'power3.out',
+      scrollTrigger: { trigger: card, start: 'top 90%', once: true }
+    });
   });
-  gsap.from('.p2', {
-    opacity: 0, y: 60, duration: 0.9, stagger: 0.15, ease: "power3.out",
-    scrollTrigger: { trigger: '.work2-list', start: "top 80%" }
+
+  gsap.from('.proc-card', {
+    opacity: 0, y: 40, duration: 0.6, stagger: 0.08, ease: 'power3.out',
+    scrollTrigger: { trigger: '.proc-grid', start: 'top 85%', once: true }
   });
   gsap.from('.sk-cat', {
-    opacity: 0, y: 30, duration: 0.7, stagger: 0.08, ease: "power3.out",
-    scrollTrigger: { trigger: '.stack2-grid', start: "top 80%" }
+    opacity: 0, y: 30, duration: 0.5, stagger: 0.06, ease: 'power3.out',
+    scrollTrigger: { trigger: '.stack2-grid', start: 'top 85%', once: true }
   });
   gsap.from('.compare-col', {
-    opacity: 0, y: 40, duration: 0.9, stagger: 0.15, ease: "power3.out",
-    scrollTrigger: { trigger: '.compare-grid', start: "top 80%" }
+    opacity: 0, y: 40, duration: 0.7, stagger: 0.12, ease: 'power3.out',
+    scrollTrigger: { trigger: '.compare-grid', start: 'top 85%', once: true }
   });
   gsap.from('.c2-card', {
-    opacity: 0, y: 20, duration: 0.5, stagger: 0.06, ease: "power2.out",
-    scrollTrigger: { trigger: '.c2-cards', start: "top 85%" }
+    opacity: 0, y: 20, duration: 0.5, stagger: 0.05, ease: 'power2.out',
+    scrollTrigger: { trigger: '.c2-cards', start: 'top 90%', once: true }
   });
 }
 
