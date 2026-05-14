@@ -44,21 +44,18 @@ img { max-width: 100%; display: block; }
 .blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(var(--blur));
-  opacity: 0.55;
+  filter: blur(60px);
+  opacity: 0.5;
   will-change: transform;
   transform: translateZ(0);
 }
-.b1 { width: 700px; height: 700px; top: -200px; left: -200px; background: radial-gradient(circle, #FFB49C, transparent 60%); }
-.b2 { width: 800px; height: 800px; top: 40%; right: -250px; background: radial-gradient(circle, #FFD7A3, transparent 60%); }
-.b3 { width: 600px; height: 600px; bottom: -200px; left: 30%; background: radial-gradient(circle, #FFC6B3, transparent 60%); }
+.b1 { width: 520px; height: 520px; top: -160px; left: -160px; background: radial-gradient(circle, #FFB49C, transparent 60%); }
+.b2 { width: 600px; height: 600px; top: 40%; right: -200px; background: radial-gradient(circle, #FFD7A3, transparent 60%); }
+.b3 { display: none; }
 
 .grain {
-  position: fixed; inset: 0; pointer-events: none; z-index: 998;
-  opacity: calc(var(--grain-opacity) * 0.6);
-  mix-blend-mode: multiply;
-  will-change: opacity;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.3 0 0 0 0 0.3 0 0 0 0 0.3 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  /* Disabled for perf: SVG noise + mix-blend-mode forces compositing on every scroll */
+  display: none;
 }
 
 /* ===== CURSOR ===== */
@@ -155,10 +152,10 @@ section { position: relative; z-index: 1; }
   animation: ripple 6s ease-out infinite;
 }
 .hero2-deco .ripple.r1 { width: 220px; height: 220px; top: 18%; right: 12%; animation-delay: 0s; }
-.hero2-deco .ripple.r2 { width: 220px; height: 220px; top: 18%; right: 12%; animation-delay: 2s; }
-.hero2-deco .ripple.r3 { width: 220px; height: 220px; top: 18%; right: 12%; animation-delay: 4s; }
-.hero2-deco .ripple.r4 { width: 180px; height: 180px; bottom: 22%; left: 8%; animation-delay: 1s; border-color: rgba(255,91,46,0.18); }
-.hero2-deco .ripple.r5 { width: 180px; height: 180px; bottom: 22%; left: 8%; animation-delay: 3s; border-color: rgba(255,91,46,0.18); }
+.hero2-deco .ripple.r2 { width: 220px; height: 220px; top: 18%; right: 12%; animation-delay: 3s; }
+.hero2-deco .ripple.r3 { display: none; }
+.hero2-deco .ripple.r4 { width: 180px; height: 180px; bottom: 22%; left: 8%; animation-delay: 1.5s; border-color: rgba(255,91,46,0.18); }
+.hero2-deco .ripple.r5 { display: none; }
 .hero2-deco .star { position: absolute; font-family: var(--font-serif); font-style: italic; color: var(--accent); opacity: 0.55; user-select: none; }
 .hero2-deco .star.s1 { top: 30%; left: 22%; font-size: 28px; animation: spinSlow 22s linear infinite; }
 .hero2-deco .star.s2 { bottom: 30%; right: 24%; font-size: 22px; animation: spinSlow 18s linear infinite reverse; }
@@ -189,11 +186,9 @@ section { position: relative; z-index: 1; }
 }
 .hero2-text { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
 @media (max-width: 1440px) {
-  .hero2-main { grid-template-columns: 1.35fr 0.65fr; gap: 30px; }
   .hero2-title { font-size: clamp(46px, 6.4vw, 96px); }
 }
 @media (max-width: 1200px) {
-  .hero2-main { grid-template-columns: 1.5fr 0.5fr; }
   .hero2-title { font-size: clamp(44px, 5.6vw, 82px); }
 }
 @media (max-width: 1100px) {
@@ -339,16 +334,6 @@ section { position: relative; z-index: 1; }
   font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;
 }
 
-@media (max-width: 1440px) {
-  .stage-main { width: min(440px, 100%); }
-  .chip-1 { right: -4%; }
-  .chip-2 { left: -4%; }
-  .chip-3 { right: -2%; }
-}
-@media (max-width: 1200px) {
-  .stage-main { width: min(380px, 100%); }
-  .stage-chip { transform: scale(0.85); }
-}
 @media (max-width: 1100px) {
   .hero2 { height: auto; max-height: none; min-height: 100vh; overflow: visible; }
   .stage-main { width: min(680px, 100%); }
@@ -400,7 +385,17 @@ section { position: relative; z-index: 1; }
   flex-wrap: wrap;
   justify-content: center;
 }
-.logos-row .dd { color: var(--accent); font-style: normal; }
+.logos-row .dd {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  font-size: 0;
+  line-height: 0;
+  vertical-align: middle;
+  margin: 0 4px 6px;
+}
 
 /* ===== SECTION HEAD ===== */
 .sec2-head {
@@ -813,21 +808,22 @@ section { position: relative; z-index: 1; }
 }
 
 /* ===== PERF HINTS ===== */
-/* Defer offscreen sections from initial paint/render */
+/* Defer offscreen heavy sections from initial paint/render.
+   NOTE: do NOT include sections with CSS animations that must keep ticking
+   while offscreen (e.g. .hero2-ticker). */
 .compare2,
 .stats2,
 .work2,
 .process2,
 .stack2,
-.contact2,
-.hero2-ticker {
+.contact2 {
   content-visibility: auto;
   contain-intrinsic-size: 0 800px;
 }
-/* Honor user preference - kill heavy continuous animations for users who ask */
+/* Reduced-motion: only damp the *infinite background* loops, never hide UI or
+   kill the marquee ticker (it's the only motion in that whole section). */
 @media (prefers-reduced-motion: reduce) {
-  .blob, .hero2-deco .ripple, .hero2-deco .star, .ticker2-track, .dot-live2 {
+  .blob, .hero2-deco .ripple, .hero2-deco .star, .dot-live2 {
     animation: none !important;
   }
-  .cursor2 { display: none; }
 }

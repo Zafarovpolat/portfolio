@@ -87,29 +87,12 @@ function setupReveals2() {
   });
 }
 
-// ---------- Parallax chips ----------
+// ---------- Stage mouse-parallax (no scroll-driven motion — user wants stage to only move on mousemove) ----------
 function setupStageParallax() {
   const stage = document.querySelector('.hero2-stage');
   if (!stage) return;
 
-  gsap.to('.stage-main', {
-    y: -60,
-    scrollTrigger: { trigger: stage, start: "top 80%", end: "bottom top", scrub: 1 }
-  });
-  gsap.to('.chip-1', {
-    y: -100, x: 30,
-    scrollTrigger: { trigger: stage, start: "top 80%", end: "bottom top", scrub: 1 }
-  });
-  gsap.to('.chip-2', {
-    y: -40, x: -20,
-    scrollTrigger: { trigger: stage, start: "top 80%", end: "bottom top", scrub: 1 }
-  });
-  gsap.to('.chip-3', {
-    y: -120, x: 40,
-    scrollTrigger: { trigger: stage, start: "top 80%", end: "bottom top", scrub: 1.5 }
-  });
-
-  // Also subtle mouse-parallax
+  // Mouse-parallax only — no ScrollTrigger here.
   stage.addEventListener('mousemove', (e) => {
     const r = stage.getBoundingClientRect();
     const x = (e.clientX - r.left - r.width/2) / r.width;
