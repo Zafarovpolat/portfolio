@@ -167,14 +167,19 @@ section { position: relative; z-index: 1; }
   max-width: 1100px;
 }
 .hero3-title .line { display: flex; gap: 18px; justify-content: center; align-items: center; flex-wrap: wrap; }
-[data-reveal] { overflow: hidden; display: inline-block; }
+[data-reveal] {
+  overflow: hidden;
+  display: inline-block;
+  padding: 0.08em 0.02em;
+  margin: -0.08em -0.02em;
+  vertical-align: baseline;
+}
 [data-reveal] .char { display: inline-block; }
 
 /* rotating chip inside title */
 .chip-inline {
-  display: inline-flex;
-  align-items: flex-start;
-  padding: 0 0.5em;
+  display: inline-flex; align-items: flex-start;
+  padding: 0.08em 0.4em;
   background: var(--accent);
   color: #fff;
   border-radius: 9999px;
@@ -184,17 +189,22 @@ section { position: relative; z-index: 1; }
   overflow: hidden;
   position: relative;
   vertical-align: middle;
+  width: var(--ci-w, max-content);
+  transition: width 0.5s cubic-bezier(0.65, 0, 0.35, 1);
 }
 .ci-stack {
   display: flex; flex-direction: column;
-  animation: ciStack 8s infinite;
+  align-items: flex-start;
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
 }
-.ci-stack > span { height: 1em; line-height: 1; display: flex; align-items: center; white-space: nowrap; }
-@keyframes ciStack {
-  0%, 22%   { transform: translateY(0); }
-  25%, 47%  { transform: translateY(-1em); }
-  50%, 72%  { transform: translateY(-2em); }
-  75%, 100% { transform: translateY(-3em); }
+.ci-stack > span {
+  height: 1em;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  align-self: flex-start;
+  flex: 0 0 auto;
 }
 .spark {
   color: var(--accent-2);
