@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Polat Zafarov — Frontend Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<!-- PP Neue Montreal substitute: use a close grotesque display face via font-family stack; we fall back to Inter Tight + system. -->
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="portfolio.css" />
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"><div class="cursor-dot"></div><div class="cursor-ring"></div></div>
+
+<!-- Curtain intro -->
+<div class="curtain" id="curtain">
+  <div class="curtain-bg-text" aria-hidden="true">
+    <div class="cbt-line"><span>P</span><span>O</span><span>L</span><span>A</span><span>T</span></div>
+    <div class="cbt-line"><span>Z</span><span>A</span><span>F</span><span>A</span><span>R</span><span>O</span><span>V</span></div>
+  </div>
+  <div class="curtain-inner">
+    <div class="curtain-row"><span class="mono sm">Initializing portfolio</span><span class="mono sm" id="curtain-pct">000</span></div>
+    <div class="curtain-bar"><div class="curtain-fill" id="curtain-fill"></div></div>
+    <div class="curtain-row"><span class="mono sm">ZAFAROV / POLAT / FRONTEND</span><span class="mono sm">TASHKENT, UZ</span></div>
+  </div>
+</div>
+
+<!-- Nav — floating pill only -->
+<nav class="nav" id="nav">
+  <div class="nav-pill" id="nav-pill">
+    <div class="nav-pill-indicator" id="nav-pill-indicator" aria-hidden="true"></div>
+    <ul class="nav-links mono sm" id="nav-links">
+      <li><a data-magnet href="#about">About</a></li>
+      <li><a data-magnet href="#work">Work</a></li>
+      <li><a data-magnet href="#stack">Stack</a></li>
+      <li><a data-magnet href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== 00 HERO ===== -->
+<section class="hero" id="hero">
+  <div class="grid-bg"></div>
+  <div class="noise"></div>
+
+  <div class="hero-stack">
+    <div class="hero-line" data-reveal>
+      <span class="serif-i">Frontend</span>
+    </div>
+    <div class="hero-line hero-name" data-reveal>
+      <span>POLAT</span>
+    </div>
+    <div class="hero-line hero-name" data-reveal>
+      <span>ZAFAROV</span>
+      <span class="asterisk" aria-hidden="true">✱</span>
+    </div>
+    <div class="hero-line" data-reveal>
+      <span class="serif-i">Developer</span>
+    </div>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="hero-blurb">
+      <p class="eyebrow mono sm">⟶ A FRONTEND ENGINEER BASED IN TASHKENT, UZBEKISTAN,</p>
+      <p class="eyebrow mono sm">&nbsp;&nbsp;&nbsp;BUILDING MODERN WEB APPS &amp; TELEGRAM MINI APPS —</p>
+      <p class="eyebrow mono sm">&nbsp;&nbsp;&nbsp;WITH REACT, NEXT.JS AND TYPESCRIPT SINCE 2024.</p>
+    </div>
+    <div class="hero-scroll mono sm">
+      <span>Scroll</span>
+      <span class="scroll-arrow">↓</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 01 MARQUEE MANIFESTO ===== -->
+<section class="marquee-sec">
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Pixel-perfect</span><em>●</em>
+      <span>Production-ready</span><em>●</em>
+      <span class="italic">&amp; fast</span><em>●</em>
+      <span>Pixel-perfect</span><em>●</em>
+      <span>Production-ready</span><em>●</em>
+      <span class="italic">&amp; fast</span><em>●</em>
+      <span>Pixel-perfect</span><em>●</em>
+      <span>Production-ready</span><em>●</em>
+      <span class="italic">&amp; fast</span><em>●</em>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02 STATS / ABOUT ===== -->
+<section class="about" id="about">
+  <header class="sec-head">
+    <div class="sec-idx mono sm">
+      <span>[02]</span>
+      <span>— INDEX</span>
+    </div>
+    <h2 class="sec-title">
+      <span data-reveal>Two years.</span>
+      <span data-reveal><em class="serif-i">Ten</em> projects.</span>
+      <span data-reveal>Three countries.</span>
+    </h2>
+  </header>
+
+  <div class="about-grid">
+    <div class="about-bio">
+      <p class="mono sm meta-label">/ PROFILE</p>
+      <p class="bio-text">
+        Frontend developer at <strong>Digital Agency RUSO</strong>, shipping e-commerce platforms, corporate sites and Telegram Mini Apps for clients across Russia, Uzbekistan and Azerbaijan. Currently studying Computer Engineering at TUIT — GPA 4.0.
+      </p>
+      <p class="bio-text">
+        I like the parts most people skip: loading states, motion curves, and the boring plumbing that makes a site feel inevitable. I ship end-to-end — from Figma to Vercel.
+      </p>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat" data-count-from="0" data-count-to="10" data-suffix="+">
+        <div class="stat-num"><span class="num">0</span><span class="suf">+</span></div>
+        <div class="stat-lbl mono sm">Production projects shipped</div>
+      </div>
+      <div class="stat" data-count-from="0" data-count-to="2" data-suffix="+">
+        <div class="stat-num"><span class="num">0</span><span class="suf">+</span></div>
+        <div class="stat-lbl mono sm">Years of commercial experience</div>
+      </div>
+      <div class="stat" data-count-from="0" data-count-to="10" data-suffix="+">
+        <div class="stat-num"><span class="num">0</span><span class="suf">+</span></div>
+        <div class="stat-lbl mono sm">Clients served internationally</div>
+      </div>
+      <div class="stat" data-count-from="0" data-count-to="2" data-suffix="">
+        <div class="stat-num"><span class="num">0</span></div>
+        <div class="stat-lbl mono sm">Telegram Mini Apps in production</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 PINNED WORK ===== -->
+<section class="work" id="work">
+  <header class="sec-head work-head">
+    <div class="sec-idx mono sm">
+      <span>[03]</span>
+      <span>— SELECTED WORK · 2024—2026</span>
+    </div>
+    <h2 class="sec-title">
+      <span data-reveal>Selected</span>
+      <span data-reveal><em class="serif-i">works</em>.</span>
+    </h2>
+  </header>
+
+  <div class="work-pin" id="work-pin">
+    <div class="work-track" id="work-track">
+      <!-- Projects -->
+      <article class="proj" data-idx="01">
+        <div class="proj-media">
+          <div class="proj-frame">
+            <div class="proj-mock mock-futura">
+              <div class="mock-topbar"><span>futura-architects.com</span><span class="mono sm">⌘</span></div>
+              <div class="mock-hero">
+                <div class="mock-kicker mono sm">ARCHITECTURE / 2025</div>
+                <div class="mock-title">Spatial<br/><em>Logic.</em></div>
+                <div class="mock-grid">
+                  <div></div><div></div><div></div><div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-no mono sm">01 / 05</div>
+          <h3 class="proj-title">FUTURA</h3>
+          <p class="proj-desc">Architecture studio website — editorial typography, scroll-driven case studies and cinematic motion. Frontend built on top of October CMS.</p>
+          <ul class="proj-stack mono sm">
+            <li>GSAP</li><li>Swiper</li><li>October CMS</li><li>SCSS</li>
+          </ul>
+          <div class="proj-links mono sm">
+            <a href="https://futura-architects.com" data-magnet>Live →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj" data-idx="02">
+        <div class="proj-media">
+          <div class="proj-frame">
+            <div class="proj-mock mock-otvetai">
+              <div class="mock-topbar"><span>otvetai.app / ask</span><span class="mono sm">⌘K</span></div>
+              <div class="ai-body">
+                <div class="ai-prompt mono sm">QUESTION · EN
+                  <p>Should I migrate from Next 14 to Next 15 <em>right now?</em></p>
+                </div>
+                <div class="ai-answer">
+                  <span class="ai-role mono sm">OTVETAI · STREAMING</span>
+                  <p>App Router is stable; the new cache API simplifies RSC <span class="cursor-blink">|</span></p>
+                </div>
+                <div class="ai-sources mono sm">
+                  <span>[1] nextjs.org</span><span>[2] vercel.com</span><span>[3] github.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-no mono sm">02 / 05</div>
+          <h3 class="proj-title">OTVETAI</h3>
+          <p class="proj-desc">AI-answers platform for Russian developers — Perplexity-style streaming responses with source citations, built on Next.js 14 App Router with full TypeScript and TanStack Query.</p>
+          <ul class="proj-stack mono sm">
+            <li>Next.js 14</li><li>TypeScript</li><li>React 18</li><li>App Router</li>
+          </ul>
+          <div class="proj-links mono sm">
+            <a href="https://github.com/Zafarovpolat/nextjs-askme" data-magnet target="_blank" rel="noopener">GitHub →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj" data-idx="03">
+        <div class="proj-media">
+          <div class="proj-frame">
+            <div class="proj-mock mock-idfood">
+              <div class="mock-topbar"><span>idfood.ru</span><span class="mono sm">⌘</span></div>
+              <div class="if-body">
+                <div class="if-kicker mono sm">MENU / SEASON 2025</div>
+                <div class="if-title"><em>Fresh</em><br/>every day.</div>
+                <div class="if-grid">
+                  <div class="if-card"><div class="if-img"></div><div class="if-meta mono sm"><span>BOWL /01</span><span>·</span></div></div>
+                  <div class="if-card"><div class="if-img dk"></div><div class="if-meta mono sm"><span>POKE /02</span><span>·</span></div></div>
+                  <div class="if-card"><div class="if-img"></div><div class="if-meta mono sm"><span>WRAP /03</span><span>·</span></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-no mono sm">03 / 05</div>
+          <h3 class="proj-title">IDFOOD</h3>
+          <p class="proj-desc">Production e-commerce for healthy meal delivery — Next.js 15 with Framer Motion, App Router, server actions and a smooth motion language across the menu, checkout and order flow.</p>
+          <ul class="proj-stack mono sm">
+            <li>Next.js 15</li><li>Framer Motion</li><li>TypeScript</li><li>App Router</li>
+          </ul>
+          <div class="proj-links mono sm">
+            <a href="https://idfood.ru" data-magnet target="_blank" rel="noopener">Live →</a>
+            <a href="https://github.com/Zafarovpolat/IYE" data-magnet target="_blank" rel="noopener">GitHub →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj" data-idx="04">
+        <div class="proj-media">
+          <div class="proj-frame">
+            <div class="proj-mock mock-whatsapp">
+              <div class="mock-topbar"><span>WA SENDER · DASHBOARD</span><span class="mono sm">●</span></div>
+              <div class="wa-body">
+                <div class="wa-stats mono sm">
+                  <div class="wa-stat"><span class="wa-num">2 480</span><span>SENT</span></div>
+                  <div class="wa-stat"><span class="wa-num">98.4%</span><span>DELIV</span></div>
+                  <div class="wa-stat"><span class="wa-num accent">LIVE</span><span>QUEUE</span></div>
+                </div>
+                <div class="wa-msg">
+                  <span class="wa-role mono sm">CAMPAIGN · LEADS_2025</span>
+                  <p>Hi — this is POLAT, reaching out about your new website <span class="cursor-blink">|</span></p>
+                </div>
+                <div class="wa-progress"><div class="wa-progress-bar"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-no mono sm">04 / 05</div>
+          <h3 class="proj-title">WHATSAPP<br/>SENDER</h3>
+          <p class="proj-desc">Fullstack messaging tool — bulk WhatsApp campaigns with queueing, delivery tracking and a custom React dashboard. Own backend for session handling and rate-limiting.</p>
+          <ul class="proj-stack mono sm">
+            <li>Node.js</li><li>React</li><li>Express</li><li>WA Web API</li>
+          </ul>
+          <div class="proj-links mono sm">
+            <a href="https://github.com/Zafarovpolat/whatsapp-sender" data-magnet target="_blank" rel="noopener">GitHub →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj" data-idx="05">
+        <div class="proj-media">
+          <div class="proj-frame">
+            <div class="proj-mock mock-dekor">
+              <div class="tg-chrome mono sm"><span>◀</span><span>Dekor House</span><span>⋯</span></div>
+              <div class="tg-grid">
+                <div class="tg-card"><div class="tg-img"></div><div class="tg-lbl mono sm">SOFA /01</div></div>
+                <div class="tg-card"><div class="tg-img dk"></div><div class="tg-lbl mono sm">LAMP /02</div></div>
+                <div class="tg-card"><div class="tg-img"></div><div class="tg-lbl mono sm">VASE /03</div></div>
+                <div class="tg-card"><div class="tg-img dk"></div><div class="tg-lbl mono sm">RUG /04</div></div>
+              </div>
+              <div class="tg-cta mono sm">CHECKOUT · 4 items</div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-no mono sm">05 / 05</div>
+          <h3 class="proj-title">DEKOR<br/>HOUSE</h3>
+          <p class="proj-desc">Telegram Mini App — a home decor store with Bot API integration and payment flow. Live in production as @DekorHouseUzBot.</p>
+          <ul class="proj-stack mono sm">
+            <li>React</li><li>Telegram SDK</li><li>Firebase</li><li>Bot API</li>
+          </ul>
+          <div class="proj-links mono sm">
+            <a href="https://t.me/DekorHouseUzBot" data-magnet>Open Mini App →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 STACK ===== -->
+<section class="stack" id="stack">
+  <header class="sec-head">
+    <div class="sec-idx mono sm">
+      <span>[04]</span>
+      <span>— TECHNOLOGY &amp; TOOLS</span>
+    </div>
+    <h2 class="sec-title">
+      <span data-reveal>The <em class="serif-i">stack</em>.</span>
+    </h2>
+  </header>
+
+  <div class="stack-table">
+    <div class="st-row st-head mono sm">
+      <span>#</span><span>Category</span><span>Tools</span><span>Fluency</span>
+    </div>
+    <div class="st-row" data-stack>
+      <span class="mono sm">01</span>
+      <span>Frontend Core</span>
+      <span>React, Next.js, TypeScript, JavaScript, HTML5, CSS3</span>
+      <span class="st-bar"><i style="--w:98%"></i><em class="mono sm">98</em></span>
+    </div>
+    <div class="st-row" data-stack>
+      <span class="mono sm">02</span>
+      <span>Styling &amp; Motion</span>
+      <span>Tailwind, SCSS, Framer Motion, GSAP, Swiper</span>
+      <span class="st-bar"><i style="--w:92%"></i><em class="mono sm">92</em></span>
+    </div>
+    <div class="st-row" data-stack>
+      <span class="mono sm">03</span>
+      <span>Backend &amp; DB</span>
+      <span>Node.js, Express, FastAPI, PostgreSQL, Firebase, Supabase</span>
+      <span class="st-bar"><i style="--w:80%"></i><em class="mono sm">80</em></span>
+    </div>
+    <div class="st-row" data-stack>
+      <span class="mono sm">04</span>
+      <span>CMS &amp; Commerce</span>
+      <span>WordPress, WooCommerce, REST, Headless</span>
+      <span class="st-bar"><i style="--w:88%"></i><em class="mono sm">88</em></span>
+    </div>
+    <div class="st-row" data-stack>
+      <span class="mono sm">05</span>
+      <span>Integrations</span>
+      <span>Telegram Bot API, Stripe, Puppeteer, Socket.IO</span>
+      <span class="st-bar"><i style="--w:85%"></i><em class="mono sm">85</em></span>
+    </div>
+    <div class="st-row" data-stack>
+      <span class="mono sm">06</span>
+      <span>DevOps</span>
+      <span>Git, Docker Compose, Vercel, Railway</span>
+      <span class="st-bar"><i style="--w:76%"></i><em class="mono sm">76</em></span>
+    </div>
+    <div class="st-row" data-stack>
+      <span class="mono sm">07</span>
+      <span>AI-assisted</span>
+      <span>Claude Code, OpenCode — daily driver</span>
+      <span class="st-bar"><i style="--w:95%"></i><em class="mono sm">95</em></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 AI ASSISTANT ===== -->
+<section class="ai" id="ai">
+  <header class="sec-head">
+    <div class="sec-idx mono sm">
+      <span>[05]</span>
+      <span>— LIVE AI CONCIERGE</span>
+    </div>
+    <h2 class="sec-title">
+      <span data-reveal>Ask <em class="serif-i">anything</em></span>
+      <span data-reveal>about me.</span>
+    </h2>
+  </header>
+
+  <div class="ai-shell">
+    <div class="ai-side mono sm">
+      <div class="ai-side-head">
+        <span class="dot-live"></span>
+        <span>POLAT.AI // online</span>
+      </div>
+      <p class="ai-side-txt">Live concierge trained on my CV, projects and the technical notes behind each shipped build. Ask about stack, availability, specific projects, hourly rate.</p>
+      <div class="ai-suggest">
+        <button class="ai-chip" data-q="What's your availability?">What's your availability?</button>
+        <button class="ai-chip" data-q="Tell me about the Dekor House Mini App.">Tell me about Dekor House</button>
+        <button class="ai-chip" data-q="How does Lecto work and what's the stack?">How does Lecto work?</button>
+        <button class="ai-chip" data-q="What's your strongest stack?">Your strongest stack?</button>
+        <button class="ai-chip" data-q="Are you open to full-stack roles?">Open to full-stack?</button>
+      </div>
+    </div>
+
+    <div class="ai-chat">
+      <div class="ai-log" id="ai-log">
+        <div class="ai-row" data-welcome>
+          <span class="ai-role mono sm">POLAT.AI</span>
+          <p class="ai-msg" data-full="Hey — I'm Polat's AI concierge. Ask me about his work, stack, or availability."></p>
+        </div>
+      </div>
+      <form class="ai-form" id="ai-form">
+        <input id="ai-input" type="text" placeholder="Type a question…" autocomplete="off" />
+        <button type="submit" class="ai-send mono sm">Send ↵</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 06 CONTACT ===== -->
+<section class="contact" id="contact">
+  <div class="grid-bg"></div>
+
+  <div class="contact-top mono sm">
+    <span>[06] — LET'S WORK</span>
+    <span id="tz-clock-2">--:--:-- UTC+5</span>
+  </div>
+
+  <h2 class="contact-huge">
+    <span data-reveal>Let's build</span>
+    <span data-reveal>something <em class="serif-i">sharp</em>.</span>
+  </h2>
+
+  <div class="contact-grid">
+    <a class="c-card" href="mailto:atuin59354081@gmail.com" data-magnet>
+      <div class="c-lbl mono sm">/ EMAIL</div>
+      <div class="c-val">atuin59354081@gmail.com</div>
+      <div class="c-arrow">↗</div>
+    </a>
+    <a class="c-card" href="https://t.me/zafarovpolat" data-magnet>
+      <div class="c-lbl mono sm">/ TELEGRAM</div>
+      <div class="c-val">@zafarovpolat</div>
+      <div class="c-arrow">↗</div>
+    </a>
+    <a class="c-card" href="tel:+998959738888" data-magnet>
+      <div class="c-lbl mono sm">/ PHONE</div>
+      <div class="c-val">+998 95 973 88 88</div>
+      <div class="c-arrow">↗</div>
+    </a>
+    <a class="c-card" href="https://github.com/Zafarovpolat" data-magnet>
+      <div class="c-lbl mono sm">/ GITHUB</div>
+      <div class="c-val">Zafarovpolat</div>
+      <div class="c-arrow">↗</div>
+    </a>
+  </div>
+
+  <footer class="footer mono sm">
+    <div class="foot-col">
+      <span class="meta-label">/ COLOPHON</span>
+      <span>HTML · CSS · GSAP · 04.2026</span>
+    </div>
+    <div class="foot-col">
+      <span class="meta-label">/ STATUS</span>
+      <span><span class="dot-live"></span> Accepting work · Q2 2026</span>
+    </div>
+    <div class="foot-col foot-sign">
+      <span>© P.Z. — Tashkent ’26</span>
+    </div>
+  </footer>
+</section>
+
+<!-- Tweaks panel -->
+<div id="tweaks-panel" class="tweaks hidden">
+  <div class="tw-head">
+    <span class="mono sm">TWEAKS</span>
+    <button id="tw-close" class="mono sm">×</button>
+  </div>
+  <div class="tw-body">
+    <label class="tw-row">
+      <span class="mono sm">Accent</span>
+      <div class="tw-swatches">
+        <button class="tw-sw" data-accent="#D4FF3A" style="background:#D4FF3A"></button>
+        <button class="tw-sw" data-accent="#3A7AFF" style="background:#3A7AFF"></button>
+        <button class="tw-sw" data-accent="#FF4D2E" style="background:#FF4D2E"></button>
+        <button class="tw-sw" data-accent="#FF7A00" style="background:#FF7A00"></button>
+        <button class="tw-sw" data-accent="#F5F5F5" style="background:#F5F5F5"></button>
+      </div>
+    </label>
+    <label class="tw-row">
+      <span class="mono sm">Noise</span>
+      <input type="range" id="tw-noise" min="0" max="100" value="40"/>
+    </label>
+    <label class="tw-row">
+      <span class="mono sm">Grid</span>
+      <input type="checkbox" id="tw-grid" checked />
+    </label>
+    <label class="tw-row">
+      <span class="mono sm">Custom cursor</span>
+      <input type="checkbox" id="tw-cursor" checked />
+    </label>
+    <label class="tw-row">
+      <span class="mono sm">Display font</span>
+      <select id="tw-font">
+        <option value="'Inter Tight', system-ui">Inter Tight (Grotesque)</option>
+        <option value="'Instrument Serif', serif">Instrument Serif (Editorial)</option>
+        <option value="'Geist Mono', ui-monospace, monospace">Geist Mono (Terminal)</option>
+      </select>
+    </label>
+  </div>
+</div>
+
+<script src="portfolio.js"></script>
+</body>
+</html>

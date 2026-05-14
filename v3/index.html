@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Polat Zafarov — Frontend Developer (v3)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="portfolio-v3.css" />
+</head>
+<body>
+
+<!-- Gradient bg -->
+<div class="v3-bg">
+  <div class="v3-gradient"></div>
+  <div class="v3-grid"></div>
+</div>
+
+<!-- Cursor -->
+<div class="cursor3" id="cursor3"></div>
+
+<!-- Floating sparkles/stickers -->
+<div class="sparkle s1">✦</div>
+<div class="sparkle s2">✦</div>
+<div class="sparkle s3">✱</div>
+<div class="sparkle s4">✧</div>
+
+<!-- Nav -->
+<nav class="nav3">
+  <a href="#top" class="logo3">
+    <span class="logo3-dot"></span>
+    <span>polat.dev</span>
+  </a>
+  <ul class="nav3-mid">
+    <li><a data-magnet href="#work">Projects</a></li>
+    <li><a data-magnet href="#features">Features</a></li>
+    <li><a data-magnet href="#faq">FAQ</a></li>
+    <li><a data-magnet href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav3-cta" data-magnet>
+    <span>Book a call</span>
+    <span class="arr">→</span>
+  </a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero3" id="top">
+  <div class="hero3-badge">
+    <span class="badge-dot"></span>
+    <span>Available for Q2 / 2026</span>
+    <span class="badge-sep">·</span>
+    <span>Remote</span>
+  </div>
+
+  <h1 class="hero3-title">
+    <span class="line"><span data-reveal>Frontend</span></span>
+    <span class="line">
+      <span data-reveal>that feels</span>
+      <span class="chip-inline">
+        <span class="ci-stack">
+          <span>alive</span>
+          <span>instant</span>
+          <span>crisp</span>
+          <span>alive</span>
+        </span>
+      </span>
+    </span>
+    <span class="line">
+      <span class="italic" data-reveal>on arrival.</span>
+      <span class="spark">✦</span>
+    </span>
+  </h1>
+
+  <p class="hero3-sub">
+    I'm <b>Polat</b> — a frontend developer shipping React, Next.js and Telegram Mini Apps. <br/>
+    10+ projects in production for clients across Russia, Uzbekistan and Azerbaijan.
+  </p>
+
+  <div class="hero3-cta">
+    <a href="#work" class="btn3-primary" data-magnet>
+      <span>See my work</span>
+      <span class="arr">→</span>
+    </a>
+    <a href="#contact" class="btn3-ghost" data-magnet>
+      <span class="play">▶</span>
+      <span>Watch showreel</span>
+    </a>
+  </div>
+
+  <!-- Floating product demo -->
+  <div class="hero3-demo" id="hero3Demo">
+    <!-- Main dashboard -->
+    <div class="demo-main" id="demoMain">
+      <div class="demo-top">
+        <span class="demo-logo"><span class="demo-logo-dot"></span>polat.dev</span>
+        <span class="demo-search">⌘K · search</span>
+        <span class="demo-avatar">P</span>
+      </div>
+      <div class="demo-body">
+        <aside class="demo-side">
+          <div class="side-item active">◉ Overview</div>
+          <div class="side-item">◎ Projects</div>
+          <div class="side-item">◎ Stack</div>
+          <div class="side-item">◎ About</div>
+          <div class="side-item">◎ Contact</div>
+        </aside>
+        <div class="demo-main-col">
+          <div class="demo-head">
+            <div>
+              <div class="dh-kicker">Overview</div>
+              <div class="dh-title">Hello, <em>Polat</em>.</div>
+            </div>
+            <div class="dh-chip">10+ shipped</div>
+          </div>
+          <div class="demo-grid">
+            <div class="dm-card big">
+              <div class="dm-card-head">
+                <span>Uptime</span>
+                <span class="mono">last 30d</span>
+              </div>
+              <div class="dm-big-num">99.8<span>%</span></div>
+              <svg class="dm-spark" viewBox="0 0 120 30" preserveAspectRatio="none">
+                <path d="M0,20 L10,18 L20,22 L30,15 L40,18 L50,10 L60,14 L70,8 L80,12 L90,6 L100,10 L110,4 L120,8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="dm-card">
+              <div class="dm-card-head"><span>Deploys</span><span class="mono">this week</span></div>
+              <div class="dm-num">24</div>
+              <div class="dm-delta up">+18%</div>
+            </div>
+            <div class="dm-card">
+              <div class="dm-card-head"><span>LCP avg</span><span class="mono">p75</span></div>
+              <div class="dm-num">1.2<span>s</span></div>
+              <div class="dm-delta up">fast</div>
+            </div>
+            <div class="dm-card wide">
+              <div class="dm-card-head"><span>Live projects</span><span class="mono">prod</span></div>
+              <div class="dm-rows">
+                <div><span class="dl-dot"></span>futura.studio<span class="mono">ok</span></div>
+                <div><span class="dl-dot"></span>dekor.house<span class="mono">ok</span></div>
+                <div><span class="dl-dot"></span>electro-new-tech.uz<span class="mono">ok</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating sticker cards -->
+    <div class="float-card fc-1">
+      <div class="fc-head">⚡ Lighthouse</div>
+      <div class="fc-big">98</div>
+    </div>
+    <div class="float-card fc-2">
+      <div class="fc-head">◉ Live</div>
+      <div class="fc-sub">Shipping now</div>
+      <div class="fc-bars">
+        <i></i><i></i><i></i><i></i>
+      </div>
+    </div>
+    <div class="float-card fc-3">
+      <div class="fc-head">📦 Stack</div>
+      <div class="fc-tags">
+        <span>Next.js</span><span>TS</span><span>GSAP</span>
+      </div>
+    </div>
+    <div class="float-card fc-4">
+      <div class="fc-head">💬 Clients</div>
+      <div class="fc-avatars">
+        <span>A</span><span>B</span><span>C</span><span>+7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logo strip -->
+  <div class="hero3-logos">
+    <span class="logos-lbl">TRUSTED BY CLIENTS AT</span>
+    <div class="logos-track">
+      <span>RUSO</span><em>✦</em>
+      <span>Dekor House</span><em>✦</em>
+      <span>Electro NT</span><em>✦</em>
+      <span>Idfood</span><em>✦</em>
+      <span>Lecto AI</span><em>✦</em>
+      <span>FUTURA</span><em>✦</em>
+      <span>RUSO</span><em>✦</em>
+      <span>Dekor House</span><em>✦</em>
+      <span>Electro NT</span><em>✦</em>
+      <span>Idfood</span><em>✦</em>
+      <span>Lecto AI</span><em>✦</em>
+      <span>FUTURA</span><em>✦</em>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS (big feature block, slider-ai style) ===== -->
+<section class="features3" id="features">
+  <div class="sec3-head">
+    <span class="eyebrow3">01 — How I work</span>
+    <h2 class="sec3-title">
+      <span data-reveal>From idea to</span>
+      <span data-reveal>shipped in</span>
+      <span class="italic" data-reveal>four steps.</span>
+    </h2>
+  </div>
+
+  <!-- 4 colored rows -->
+  <div class="feat-rows">
+    <article class="feat-row fr-1">
+      <div class="fr-text">
+        <div class="fr-num">01</div>
+        <h3>Talk through the scope</h3>
+        <p>We jump on a call, I review your Figma/brand/CMS needs and turn it into a build plan with real timelines.</p>
+        <ul class="fr-tags">
+          <li>Figma review</li><li>Scope doc</li><li>Daily check-ins</li>
+        </ul>
+      </div>
+      <div class="fr-visual">
+        <div class="scope-card">
+          <div class="sc-head">
+            <span class="sc-tag">SCOPE · FUTURA</span>
+            <span class="sc-date">Q2 2026</span>
+          </div>
+          <div class="sc-rows">
+            <div><span class="sc-check"></span>Component inventory (14)</div>
+            <div><span class="sc-check on"></span>Animation spec</div>
+            <div><span class="sc-check on"></span>CMS strategy</div>
+            <div><span class="sc-check on"></span>Budget & timeline</div>
+          </div>
+          <div class="sc-foot">
+            <span class="sc-avatars"><span>P</span><span>C</span></span>
+            <span class="sc-btn">Approve →</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="feat-row fr-2">
+      <div class="fr-text">
+        <div class="fr-num">02</div>
+        <h3>Build in public</h3>
+        <p>Every day a fresh Vercel preview. You see progress as it happens, not after two silent weeks.</p>
+        <ul class="fr-tags">
+          <li>Preview per PR</li><li>Changelog</li><li>Slack updates</li>
+        </ul>
+      </div>
+      <div class="fr-visual">
+        <div class="deploy-card">
+          <div class="dc-head">
+            <span>Deployments</span>
+            <span class="mono">live</span>
+          </div>
+          <div class="dc-rows">
+            <div class="dc-row"><span class="dc-ok"></span>feat/hero-motion<span class="dc-time">2 min</span></div>
+            <div class="dc-row"><span class="dc-ok"></span>fix/cms-preview<span class="dc-time">14 min</span></div>
+            <div class="dc-row"><span class="dc-ok"></span>feat/pricing-tab<span class="dc-time">1 hr</span></div>
+            <div class="dc-row"><span class="dc-run"></span>main · futura-prod<span class="dc-time">now</span></div>
+          </div>
+          <div class="dc-bar"><i></i></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="feat-row fr-3">
+      <div class="fr-text">
+        <div class="fr-num">03</div>
+        <h3>Motion & polish</h3>
+        <p>Scroll, cursor, page transitions, micro-interactions — baked in from day one, not bolted on at the end.</p>
+        <ul class="fr-tags">
+          <li>GSAP</li><li>Framer Motion</li><li>Lenis</li>
+        </ul>
+      </div>
+      <div class="fr-visual">
+        <div class="motion-card">
+          <div class="mc-head">Timeline · scroll.hero</div>
+          <div class="mc-track">
+            <div class="mc-lane"><span class="mc-bar b-1"></span><span class="mc-lbl">reveal title</span></div>
+            <div class="mc-lane"><span class="mc-bar b-2"></span><span class="mc-lbl">pin stage</span></div>
+            <div class="mc-lane"><span class="mc-bar b-3"></span><span class="mc-lbl">float chips</span></div>
+            <div class="mc-lane"><span class="mc-bar b-4"></span><span class="mc-lbl">logo strip</span></div>
+          </div>
+          <div class="mc-play"><span class="mc-head">▶</span><span>playhead · 00:03.120</span></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="feat-row fr-4">
+      <div class="fr-text">
+        <div class="fr-num">04</div>
+        <h3>Ship & maintain</h3>
+        <p>Deploy to Vercel/Railway, docs, analytics, monitoring. Then I stay on call for tweaks.</p>
+        <ul class="fr-tags">
+          <li>Vercel</li><li>Analytics</li><li>Retainer</li>
+        </ul>
+      </div>
+      <div class="fr-visual">
+        <div class="monitor-card">
+          <div class="mn-head">Uptime · last 30d</div>
+          <div class="mn-bars">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <div class="mn-num">99.8<span>%</span></div>
+          <div class="mn-lbl">1 minor blip · resolved &lt;1 min</div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== WORK ===== -->
+<section class="work3" id="work">
+  <div class="sec3-head">
+    <span class="eyebrow3">02 — Selected work</span>
+    <h2 class="sec3-title">
+      <span data-reveal>Things I've</span>
+      <span class="italic" data-reveal>actually shipped.</span>
+    </h2>
+  </div>
+
+  <div class="work3-list">
+    <article class="w3-card">
+      <div class="w3-info">
+        <div class="w3-no">01 / 04</div>
+        <h3 class="w3-title">FUTURA <em>Studio</em></h3>
+        <p>Architecture studio site — editorial typography, scroll-driven case studies, custom cursor.</p>
+        <ul class="w3-tags"><li>Next.js</li><li>GSAP</li><li>TS</li></ul>
+      </div>
+      <div class="w3-visual">
+        <div class="w3-window">
+          <div class="w3w-top"><span class="w3-dr"></span><span class="w3-dy"></span><span class="w3-dg"></span><span class="w3w-url">futura.studio</span></div>
+          <div class="w3w-body v-futura">
+            <div class="v-kicker">PROJECT · 014</div>
+            <div class="v-title">Spatial<br/><em>Logic.</em></div>
+            <div class="v-pics"><span class="vp p1"></span><span class="vp p2"></span><span class="vp p3"></span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="w3-card">
+      <div class="w3-info">
+        <div class="w3-no">02 / 04</div>
+        <h3 class="w3-title">Dekor <em>House</em></h3>
+        <p>Telegram Mini App — full home decor store with Bot API and payments. Live in production.</p>
+        <ul class="w3-tags"><li>React</li><li>Telegram</li><li>Firebase</li></ul>
+      </div>
+      <div class="w3-visual">
+        <div class="w3-phone">
+          <div class="phn-top">◀ Dekor House ⋯</div>
+          <div class="phn-grid">
+            <div class="phn-c"><div class="phn-i"></div><div class="phn-t">SOFA · $1290</div></div>
+            <div class="phn-c"><div class="phn-i dk"></div><div class="phn-t">LAMP · $210</div></div>
+            <div class="phn-c"><div class="phn-i"></div><div class="phn-t">VASE · $89</div></div>
+            <div class="phn-c"><div class="phn-i dk"></div><div class="phn-t">RUG · $540</div></div>
+          </div>
+          <div class="phn-cta">Checkout · 4 items</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="w3-card">
+      <div class="w3-info">
+        <div class="w3-no">03 / 04</div>
+        <h3 class="w3-title">Lecto <em>AI</em></h3>
+        <p>AI-powered study assistant — streaming LLM responses with contextual memory for students.</p>
+        <ul class="w3-tags"><li>Next.js</li><li>OpenAI</li><li>Supabase</li></ul>
+      </div>
+      <div class="w3-visual">
+        <div class="w3-window">
+          <div class="w3w-top"><span class="w3-dr"></span><span class="w3-dy"></span><span class="w3-dg"></span><span class="w3w-url">lecto.ai</span></div>
+          <div class="w3w-body v-lecto">
+            <div class="lec-r"><span class="lec-tag">USER</span><p>Explain Pythagoras</p></div>
+            <div class="lec-r ai"><span class="lec-tag">LECTO</span><p>a² + b² = c² — in a right triangle, the square of the hypotenuse<span class="blk">|</span></p></div>
+            <div class="lec-ask">Ask anything… <span>⌘↵</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="w3-card">
+      <div class="w3-info">
+        <div class="w3-no">04 / 04</div>
+        <h3 class="w3-title">Electro <em>New Tech</em></h3>
+        <p>E-commerce on WooCommerce + Next.js storefront. Optimized product pipeline and checkout.</p>
+        <ul class="w3-tags"><li>WooCommerce</li><li>Next.js</li><li>Stripe</li></ul>
+      </div>
+      <div class="w3-visual">
+        <div class="w3-window">
+          <div class="w3w-top"><span class="w3-dr"></span><span class="w3-dy"></span><span class="w3-dg"></span><span class="w3w-url">electro-new-tech.uz</span></div>
+          <div class="w3w-body v-ecom">
+            <div class="ec-g">
+              <div class="ec-c"><div class="ec-i"></div><div class="ec-p">$249</div></div>
+              <div class="ec-c"><div class="ec-i dk"></div><div class="ec-p">$119</div></div>
+              <div class="ec-c"><div class="ec-i"></div><div class="ec-p">$549</div></div>
+              <div class="ec-c"><div class="ec-i dk"></div><div class="ec-p">$89</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== METRICS STRIP (slider-ai style big pastel stats) ===== -->
+<section class="metrics3">
+  <div class="m3-row">
+    <div class="m3-cell">
+      <div class="m3-num">10<em>+</em></div>
+      <div class="m3-lbl">Production projects</div>
+    </div>
+    <div class="m3-cell">
+      <div class="m3-num">2<em>+</em></div>
+      <div class="m3-lbl">Years shipping</div>
+    </div>
+    <div class="m3-cell">
+      <div class="m3-num">3</div>
+      <div class="m3-lbl">Countries</div>
+    </div>
+    <div class="m3-cell">
+      <div class="m3-num">24<em>h</em></div>
+      <div class="m3-lbl">Reply time</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq3" id="faq">
+  <div class="sec3-head">
+    <span class="eyebrow3">03 — Questions?</span>
+    <h2 class="sec3-title">
+      <span data-reveal>Good ones</span>
+      <span class="italic" data-reveal>I get a lot.</span>
+    </h2>
+  </div>
+  <div class="faq3-list">
+    <details open>
+      <summary><span>How fast can you start?</span><span class="q-sign">+</span></summary>
+      <p>Usually within a week. For urgent ramps (landing pages, bug fixes), same-day is possible.</p>
+    </details>
+    <details>
+      <summary><span>Do you also do backend?</span><span class="q-sign">+</span></summary>
+      <p>Yes — Node, Express, FastAPI, PostgreSQL, Firebase, Supabase. I've shipped full-stack tools like a WhatsApp bulk sender.</p>
+    </details>
+    <details>
+      <summary><span>Telegram Mini Apps?</span><span class="q-sign">+</span></summary>
+      <p>Two are in production — including Dekor House, a full e-commerce flow with Bot API and payments.</p>
+    </details>
+    <details>
+      <summary><span>Remote only?</span><span class="q-sign">+</span></summary>
+      <p>Yes, remote only. Based in Tashkent (UTC+5). I overlap well with EU and CIS hours.</p>
+    </details>
+    <details>
+      <summary><span>Rate?</span><span class="q-sign">+</span></summary>
+      <p>Full-time around $800/mo. Project rates depend on scope — I send a fixed quote after scope review.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ===== AI CONCIERGE ===== -->
+<section class="ai3">
+  <div class="ai3-shell">
+    <div class="ai3-head">
+      <div class="ai3-title">
+        <span class="ai3-dot"></span>
+        <span>Polat.AI — live concierge</span>
+      </div>
+      <span class="ai3-meta">Ask anything about my work</span>
+    </div>
+    <div class="ai3-log" id="ai3-log">
+      <div class="ai3-row"><span class="ai3-tag">POLAT.AI</span><p>Hey! I'm Polat's AI concierge. Ask me about his stack, availability or any project.</p></div>
+    </div>
+    <div class="ai3-chips">
+      <button class="ai3-chip" data-q="What's your availability?">Availability</button>
+      <button class="ai3-chip" data-q="What stack do you love most?">Favorite stack</button>
+      <button class="ai3-chip" data-q="Tell me about Dekor House.">Dekor House</button>
+      <button class="ai3-chip" data-q="How do I hire you?">How to hire</button>
+    </div>
+    <form id="ai3-form" class="ai3-form">
+      <input id="ai3-input" placeholder="Type a question about Polat…" autocomplete="off"/>
+      <button type="submit">↵</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact3" id="contact">
+  <div class="c3-huge">
+    <span data-reveal>Let's build</span>
+    <span class="italic" data-reveal>something</span>
+    <span data-reveal>great together.</span>
+    <span class="spark-x">✦</span>
+  </div>
+
+  <div class="c3-grid">
+    <a class="c3-card" href="mailto:atuin59354081@gmail.com" data-magnet>
+      <span class="c3-lbl">Email</span>
+      <span class="c3-val">atuin59354081@gmail.com</span>
+      <span class="c3-arr">↗</span>
+    </a>
+    <a class="c3-card" href="https://t.me/zafarovpolat" data-magnet>
+      <span class="c3-lbl">Telegram</span>
+      <span class="c3-val">@zafarovpolat</span>
+      <span class="c3-arr">↗</span>
+    </a>
+    <a class="c3-card" href="tel:+998959738888" data-magnet>
+      <span class="c3-lbl">Phone</span>
+      <span class="c3-val">+998 95 973 88 88</span>
+      <span class="c3-arr">↗</span>
+    </a>
+    <a class="c3-card" href="https://github.com/Zafarovpolat" data-magnet>
+      <span class="c3-lbl">GitHub</span>
+      <span class="c3-val">Zafarovpolat</span>
+      <span class="c3-arr">↗</span>
+    </a>
+  </div>
+
+  <footer class="foot3">
+    <div>© 2026 Polat Zafarov · Tashkent</div>
+    <div>Made with Next.js · GSAP · Love</div>
+  </footer>
+</section>
+
+<!-- Tweaks -->
+<div id="tweaks3" class="tweaks3 hidden">
+  <div class="tw3-head"><span>Tweaks</span><button id="tw3-close">×</button></div>
+  <div class="tw3-body">
+    <label><span>Accent</span>
+      <div class="tw3-sws">
+        <button data-accent="#6366F1" style="background:#6366F1"></button>
+        <button data-accent="#EC4899" style="background:#EC4899"></button>
+        <button data-accent="#0EA5E9" style="background:#0EA5E9"></button>
+        <button data-accent="#F97316" style="background:#F97316"></button>
+        <button data-accent="#10B981" style="background:#10B981"></button>
+      </div>
+    </label>
+    <label><span>Gradient intensity</span><input type="range" id="tw3-grad" min="0" max="100" value="60"/></label>
+    <label><span>Sparkles</span><input type="checkbox" id="tw3-spark" checked/></label>
+  </div>
+</div>
+
+<script src="portfolio-v3.js"></script>
+</body>
+</html>

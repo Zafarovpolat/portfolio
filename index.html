@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Polat Zafarov — Portfolio Versions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0E0D0C;
+    --fg: #F3EFE7;
+    --muted: #8E8678;
+    --accent: #FF5B2E;
+    --line: rgba(243,239,231,0.12);
+    --font: 'Geist', system-ui, sans-serif;
+    --mono: 'Geist Mono', ui-monospace, monospace;
+    --serif: 'Instrument Serif', Georgia, serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 24px;
+    gap: 48px;
+  }
+  .hdr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 20px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .brand .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+  }
+  .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  main {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    flex: 1;
+  }
+  .lede {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: end;
+    padding-bottom: 24px;
+  }
+  h1 {
+    font-family: var(--font);
+    font-size: clamp(40px, 6.5vw, 80px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    font-weight: 600;
+  }
+  h1 em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .sub {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.55;
+    max-width: 520px;
+  }
+  .sub b { color: var(--fg); font-weight: 500; }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    min-height: 280px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(243,239,231,0.28);
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+  }
+  .card-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .card-title {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .card-title em {
+    font-family: var(--serif);
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .card-desc {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.55;
+    flex: 1;
+  }
+  .card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg);
+  }
+  .card-cta .arr {
+    display: inline-block;
+    transition: transform 0.25s ease;
+  }
+  .card:hover .card-cta .arr { transform: translateX(4px); color: var(--accent); }
+  .card-thumb {
+    height: 96px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .thumb-1 { background: linear-gradient(135deg, #1a1817 0%, #2a2724 60%, #FF5B2E 200%); }
+  .thumb-2 { background: linear-gradient(135deg, #F3EDE2 0%, #E8DFD0 100%); }
+  .thumb-2::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 80% 30%, rgba(255,91,46,0.25), transparent 50%);
+  }
+  .thumb-3 { background: linear-gradient(135deg, #0a1024 0%, #1a2855 50%, #6d3aa3 100%); }
+  .thumb-3::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255,255,255,0.18), transparent 30%),
+      radial-gradient(circle at 70% 70%, rgba(167,139,250,0.25), transparent 35%);
+  }
+  .extras {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .extras h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .extras .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.02);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--fg);
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .pill:hover { border-color: var(--accent); background: rgba(255,91,46,0.06); }
+  .pill .accent { color: var(--accent); }
+  footer {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  @media (max-width: 900px) {
+    .lede { grid-template-columns: 1fr; gap: 16px; }
+    .cards { grid-template-columns: 1fr; }
+    .extras { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="brand"><span class="dot"></span><span>Polat Zafarov</span></div>
+  <div class="meta">3 Portfolio Versions · 2026</div>
+</header>
+
+<main>
+  <section class="lede">
+    <h1>Three takes on the<br/>same <em>portfolio.</em></h1>
+    <p class="sub">Frontend developer based in <b>Tashkent, Uzbekistan</b>. Below are three design directions for my personal site — dark editorial, light editorial with motion, and a modern gradient slider. Pick one and have a look.</p>
+  </section>
+
+  <section class="cards">
+    <a class="card" href="./v1/">
+      <div class="card-thumb thumb-1"></div>
+      <div class="card-num">Version 01 · Dark editorial</div>
+      <div class="card-title">Editorial <em>Dark.</em></div>
+      <div class="card-desc">Heavy serif italics, monospaced labels, GSAP scroll reveals. The reference build — calm, dense, magazine-feel.</div>
+      <span class="card-cta">View<span class="arr">→</span></span>
+    </a>
+    <a class="card" href="./v2/">
+      <div class="card-thumb thumb-2"></div>
+      <div class="card-num">Version 02 · Light editorial</div>
+      <div class="card-title">Light &amp; <em>Motion.</em></div>
+      <div class="card-desc">Cream background with ripple decorations, 100vh hero, smooth scroll, light project cards, live AI concierge.</div>
+      <span class="card-cta">View<span class="arr">→</span></span>
+    </a>
+    <a class="card" href="./v3/">
+      <div class="card-thumb thumb-3"></div>
+      <div class="card-num">Version 03 · Slider</div>
+      <div class="card-title">Modern <em>Slider.</em></div>
+      <div class="card-desc">Gradient backgrounds with sparkles, word-rotator hero, project slider. Still in progress.</div>
+      <span class="card-cta">View<span class="arr">→</span></span>
+    </a>
+  </section>
+
+  <section class="extras">
+    <div>
+      <h3>Resume</h3>
+      <div class="row">
+        <a class="pill" href="./uploads/resume.pdf" target="_blank">EN · <span class="accent">PDF</span></a>
+        <a class="pill" href="./uploads/zafarov.pdf" target="_blank">RU · <span class="accent">PDF</span></a>
+      </div>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <div class="row">
+        <a class="pill" href="mailto:atuin59354081@gmail.com">Email</a>
+        <a class="pill" href="https://t.me/zafarovpolat" target="_blank">Telegram</a>
+        <a class="pill" href="tel:+998959738888">+998 95 973 88 88</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 · Polat Zafarov · Tashkent, UZ</span>
+  <span>Built with HTML · CSS · JS · GSAP · Gemini AI</span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,51 @@
+        Polat Zafarov
+                                                                                       Frontend
+                                                                                      Developer
+
+
+       Contacts                   About me
+
+  Phone                       Frontend Developer with 2+ years of
+  +998959738888               experience building modern web
+                              applications and Telegram Mini Apps.
+  Email
+  atuin59354081@gmail.com     Specialize in React, Next.js, and
+                              TypeScript. Delivered 10+ projects in
+  Location                    production — from e-commerce
+  Tashkent, Uzbekistan        platforms to AI integrations. Worked
+                              with 10+ clients from Russia, Uzbekistan,
+  Github                      and Azerbaijan.
+
+  Website
+
+
+
+
+       Experience                                                   Education
+
+ 2024 – Now              Frontend Developer                   2024 – Now        Computer
+                         Digital Agency RUSO                                    Engineering
+                         Developed e-commerce stores                            TUIT (Tashkent
+                         and corporate websites using                           University of
+                         Next.js and WordPress.                                 Information
+                         Delivered 10+ projects on time.
+                                                                                               GPA: 4.0
+ 2025 – Now              Freelance Developer                        Languages
+                         Independent Clients
+                         Built Telegram Mini Apps and         Uzbek - Native (C2)
+                         landing pages for clients. 2         Russian - Proficient (C2)
+                         applications currently in            English - UpperIntermediate (B2)
+                         production.
+
+
+
+
+       Skills                                                       Projects
+Frontend: React, Next.js, TypeScript,                         FUTURA - Architecture studio website
+JavaScript, HTML5, CSS3, Tailwind CSS.                        Electro New Tech - E-commerce store
+Backend & DB: NodeJS, PostgreSQL,                             Idfood - Corporate website for a food
+Firebase, Supabase.                                           manufacturer
+CMS & Tools: WordPress, WooCommerce,                          Dekor House - Mini App store for home decor
+Git, Figma, Vercel.
+                                                              Lecto - AI-powered study assistant
+

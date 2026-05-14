@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Polat Zafarov — Frontend Developer (Light)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="portfolio-v2.css" />
+</head>
+<body>
+
+<!-- Soft animated background -->
+<div class="soft-bg">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="grain"></div>
+</div>
+
+<!-- Cursor -->
+<div class="cursor2" id="cursor2"><span></span></div>
+
+<!-- Nav -->
+<nav class="nav2">
+  <a href="#top" class="logo2">
+    <span class="logo-mark">◎</span>
+    <span>Polat<span class="logo-dot">.</span>Z</span>
+  </a>
+  <ul class="nav2-mid">
+    <li><a data-magnet href="#work">Work</a></li>
+    <li><a data-magnet href="#compare">Old vs New</a></li>
+    <li><a data-magnet href="#stack">Stack</a></li>
+    <li><a data-magnet href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav2-cta" data-magnet>
+    <span class="dot-live2"></span>
+    <span>Hire me</span>
+    <span class="arr">→</span>
+  </a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero2" id="top">
+  <!-- decorative ripples + soft dot grid -->
+  <div class="hero2-deco" aria-hidden="true">
+    <div class="dotgrid"></div>
+    <div class="ripple r1"></div>
+    <div class="ripple r2"></div>
+    <div class="ripple r3"></div>
+    <div class="ripple r4"></div>
+    <div class="ripple r5"></div>
+    <span class="star s1">✱</span>
+    <span class="star s2">✱</span>
+  </div>
+
+  <div class="hero2-kicker">
+    <span class="mono">FRONTEND DEVELOPER · TASHKENT, UZ</span>
+    <span class="kicker-chip"><span class="dot-live2"></span>Available Q2/2026</span>
+  </div>
+
+  <div class="hero2-main">
+    <div class="hero2-text">
+      <h1 class="hero2-title">
+        <span class="line">
+          <span data-reveal>I build</span>
+          <span class="italic" data-reveal>modern</span>
+        </span>
+        <span class="line">
+          <span data-reveal>web apps that</span>
+        </span>
+        <span class="line">
+          <span data-reveal>ship on</span>
+          <span class="italic" data-reveal>time.</span>
+        </span>
+      </h1>
+
+      <p class="hero2-sub">
+        Polat Zafarov — a frontend developer with <b>2+ years</b> in production. React, Next.js and TypeScript for 10+ clients across Russia, Uzbekistan, and Azerbaijan.
+      </p>
+
+      <div class="hero2-cta">
+        <a href="#work" class="btn-primary" data-magnet>
+          <span>See selected work</span>
+          <span class="arr">→</span>
+        </a>
+        <a href="#contact" class="btn-ghost" data-magnet>
+          <span>Get in touch</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Floating UI mockup -->
+    <div class="hero2-stage">
+      <div class="stage-main" id="stageMain">
+        <div class="stage-browser">
+          <div class="browser-bar">
+            <span class="dotR"></span><span class="dotY"></span><span class="dotG"></span>
+            <span class="browser-url mono">polat.dev</span>
+          </div>
+          <div class="browser-body">
+            <div class="browser-nav">
+              <span class="pill active">Home</span><span class="pill">Work</span><span class="pill">About</span>
+              <span class="pill-end mono">10+ shipped</span>
+            </div>
+            <div class="browser-hero">
+              <div class="b-title">FUTURA<br/><em>Architecture Studio</em></div>
+              <div class="b-grid">
+                <div class="b-cell"></div><div class="b-cell dark"></div><div class="b-cell"></div>
+                <div class="b-cell"></div><div class="b-cell"></div><div class="b-cell dark"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-chip chip-1" id="chip1">
+        <div class="chip-head mono">PAGESPEED · DESKTOP</div>
+        <div class="chip-big">98</div>
+        <div class="chip-bar"><i style="--w:98%"></i></div>
+      </div>
+      <div class="stage-chip chip-2" id="chip2">
+        <div class="chip-head mono">DEPLOY · VERCEL</div>
+        <div class="chip-rows">
+          <div><span class="dot-live2"></span>futura-prod · 04:12</div>
+          <div><span class="dot-gray"></span>electro-beta · 12:48</div>
+          <div><span class="dot-live2"></span>dekor-bot · 22:01</div>
+        </div>
+      </div>
+      <div class="stage-chip chip-3" id="chip3">
+        <div class="chip-head mono">STACK</div>
+        <div class="chip-stack">
+          <span>Next.js</span><span>React</span><span>TypeScript</span>
+          <span>Tailwind</span><span>GSAP</span><span>Node</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Hero ticker promoted to its own band so hero stays at 100vh -->
+<section class="hero2-ticker">
+  <div class="ticker2-track">
+    <span>Next.js 15</span><em>●</em><span>Telegram Mini Apps</span><em>●</em>
+    <span>Full-stack builds</span><em>●</em><span>Motion-first</span><em>●</em>
+    <span>Pixel-perfect from Figma</span><em>●</em><span>Shipping since 2024</span><em>●</em>
+    <span>Next.js 15</span><em>●</em><span>Telegram Mini Apps</span><em>●</em>
+    <span>Full-stack builds</span><em>●</em><span>Motion-first</span><em>●</em>
+    <span>Pixel-perfect from Figma</span><em>●</em><span>Shipping since 2024</span><em>●</em>
+  </div>
+</section>
+
+<!-- ===== LOGOS ===== -->
+<section class="logos">
+  <div class="logos-label mono">WORKED WITH TEAMS FROM</div>
+  <div class="logos-row">
+    <span>RUSO Agency</span><span class="dd">·</span>
+    <span>Dekor House</span><span class="dd">·</span>
+    <span>Electro New Tech</span><span class="dd">·</span>
+    <span>Idfood</span><span class="dd">·</span>
+    <span>Lecto AI</span><span class="dd">·</span>
+    <span>FUTURA</span>
+  </div>
+</section>
+
+<!-- ===== OLD VS NEW (AffBulk style comparison) ===== -->
+<section class="compare" id="compare">
+  <header class="sec2-head">
+    <span class="eyebrow2 mono">— WHY HIRE ME</span>
+    <h2 class="sec2-title">
+      <span data-reveal>The old way vs.</span>
+      <span class="italic" data-reveal>the way I build.</span>
+    </h2>
+  </header>
+
+  <div class="compare-grid">
+    <div class="compare-col col-old">
+      <div class="col-head mono">Traditional agency</div>
+      <ul class="col-list">
+        <li>Long hand-off between designer & dev</li>
+        <li>WordPress themes that slow over time</li>
+        <li>No motion, no micro-interactions</li>
+        <li>Cookie-cutter landing templates</li>
+        <li>Hours of manual CMS setup</li>
+        <li>"We'll add animation later" — never does</li>
+      </ul>
+    </div>
+    <div class="compare-col col-new">
+      <div class="col-head mono">With Polat</div>
+      <ul class="col-list">
+        <li><b>Figma → production</b> by the same person</li>
+        <li><b>Next.js 15</b> with edge-rendering</li>
+        <li><b>GSAP + Framer Motion</b> in the base setup</li>
+        <li><b>Pixel-perfect</b> custom builds, not themes</li>
+        <li><b>Headless CMS</b> + Telegram Bot integrations</li>
+        <li><b>Motion-first</b> — never an afterthought</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats2">
+  <div class="stats2-grid">
+    <div class="stat2" data-to="10" data-suffix="+">
+      <div class="s2-num"><span class="num">0</span><span class="suf">+</span></div>
+      <div class="s2-lbl">Production projects</div>
+    </div>
+    <div class="stat2" data-to="2" data-suffix="+">
+      <div class="s2-num"><span class="num">0</span><span class="suf">+</span></div>
+      <div class="s2-lbl">Years shipping</div>
+    </div>
+    <div class="stat2" data-to="3" data-suffix="">
+      <div class="s2-num"><span class="num">0</span></div>
+      <div class="s2-lbl">Countries worked with</div>
+    </div>
+    <div class="stat2" data-to="98" data-suffix="">
+      <div class="s2-num"><span class="num">0</span></div>
+      <div class="s2-lbl">Avg. Lighthouse score</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WORK ===== -->
+<section class="work2" id="work">
+  <header class="sec2-head">
+    <span class="eyebrow2 mono">— SELECTED WORK · 2024—2026</span>
+    <h2 class="sec2-title">
+      <span data-reveal>Things I've</span>
+      <span class="italic" data-reveal>shipped.</span>
+    </h2>
+  </header>
+
+  <div class="work2-list">
+    <article class="p2" data-idx="01">
+      <div class="p2-meta">
+        <div class="p2-no mono">01 / 04</div>
+        <h3 class="p2-title">FUTURA<br/><em>Studio</em></h3>
+        <p class="p2-desc">Architecture studio website with editorial typography and scroll-driven case studies. Built on October CMS with GSAP + Swiper.</p>
+        <ul class="p2-tags">
+          <li>October CMS</li><li>GSAP</li><li>Swiper</li><li>SCSS</li>
+        </ul>
+        <a class="p2-link" href="https://futura-architects.com" target="_blank" rel="noopener" data-magnet>Live site <span class="arr">→</span></a>
+      </div>
+      <div class="p2-visual">
+        <div class="p2-mock mock-futura2">
+          <div class="m-top"><span class="dr"></span><span class="dy"></span><span class="dg"></span><span class="mono m-url">futura.studio</span></div>
+          <div class="m-body">
+            <div class="m-kicker mono">PROJECT · 014</div>
+            <div class="m-title">Spatial<br/><em>Logic.</em></div>
+            <div class="m-pics">
+              <div class="pic pic-1"></div>
+              <div class="pic pic-2"></div>
+              <div class="pic pic-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="p2 reverse" data-idx="02">
+      <div class="p2-meta">
+        <div class="p2-no mono">02 / 04</div>
+        <h3 class="p2-title">Dekor<br/><em>House</em></h3>
+        <p class="p2-desc">Telegram Mini App — a full home decor store with Bot API integration and payments. Live as @DekorHouseUzBot.</p>
+        <ul class="p2-tags">
+          <li>React</li><li>Telegram SDK</li><li>Firebase</li><li>Bot API</li>
+        </ul>
+        <a class="p2-link" href="https://t.me/DekorHouseUzBot" target="_blank" rel="noopener" data-magnet>Open Mini App <span class="arr">→</span></a>
+      </div>
+      <div class="p2-visual">
+        <div class="p2-mock mock-dekor2">
+          <div class="tg-top mono">← Dekor House ⋯</div>
+          <div class="tg-grid">
+            <div class="tg-c"><div class="tg-i"></div><div class="tg-t mono">SOFA · $1290</div></div>
+            <div class="tg-c"><div class="tg-i dk"></div><div class="tg-t mono">LAMP · $210</div></div>
+            <div class="tg-c"><div class="tg-i"></div><div class="tg-t mono">VASE · $89</div></div>
+            <div class="tg-c"><div class="tg-i dk"></div><div class="tg-t mono">RUG · $540</div></div>
+          </div>
+          <div class="tg-cta">Checkout · 4 items</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="p2" data-idx="03">
+      <div class="p2-meta">
+        <div class="p2-no mono">03 / 04</div>
+        <h3 class="p2-title">Lecto<br/><em>AI tutor</em></h3>
+        <p class="p2-desc">AI study assistant Telegram Mini App — PDF/DOCX upload, OCR, smart notes, quizzes, flashcards, RAG search and PPTX generation.</p>
+        <ul class="p2-tags">
+          <li>React 18</li><li>FastAPI</li><li>PostgreSQL</li><li>Gemini</li>
+        </ul>
+        <a class="p2-link" href="https://t.me/lectoaibot" target="_blank" rel="noopener" data-magnet>Open Mini App <span class="arr">→</span></a>
+      </div>
+      <div class="p2-visual">
+        <div class="p2-mock mock-lecto2">
+          <div class="m-top"><span class="dr"></span><span class="dy"></span><span class="dg"></span><span class="mono m-url">@lectoaibot</span></div>
+          <div class="lc-body">
+            <div class="lc-row"><span class="lc-tag mono">USER</span><div class="lc-txt">What's the Pythagorean theorem?</div></div>
+            <div class="lc-row ai"><span class="lc-tag mono">LECTO</span><div class="lc-txt">In a right triangle, a² + b² = c². The square of the hypotenuse equals the sum of the squares of the two legs<span class="blink">|</span></div></div>
+            <div class="lc-input mono">Ask anything…<span class="kb">⌘ ↵</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="p2 reverse" data-idx="04">
+      <div class="p2-meta">
+        <div class="p2-no mono">04 / 04</div>
+        <h3 class="p2-title">Electro<br/><em>New Tech</em></h3>
+        <p class="p2-desc">E-commerce store on WordPress + WooCommerce — custom theme, cart and checkout with SCSS + jQuery.</p>
+        <ul class="p2-tags">
+          <li>WordPress</li><li>WooCommerce</li><li>SCSS</li><li>jQuery</li>
+        </ul>
+        <a class="p2-link" href="https://electro.newtech.az" target="_blank" rel="noopener" data-magnet>Live site <span class="arr">→</span></a>
+      </div>
+      <div class="p2-visual">
+        <div class="p2-mock mock-ecom2">
+          <div class="m-top"><span class="dr"></span><span class="dy"></span><span class="dg"></span><span class="mono m-url">electro-new-tech.uz</span></div>
+          <div class="ec-body">
+            <div class="ec-grid">
+              <div class="ec-c"><div class="ec-i"></div><div class="ec-mn mono"><b>$249</b><span>01</span></div></div>
+              <div class="ec-c"><div class="ec-i dk"></div><div class="ec-mn mono"><b>$119</b><span>02</span></div></div>
+              <div class="ec-c"><div class="ec-i"></div><div class="ec-mn mono"><b>$549</b><span>03</span></div></div>
+              <div class="ec-c"><div class="ec-i dk"></div><div class="ec-mn mono"><b>$89</b><span>04</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section class="process">
+  <header class="sec2-head">
+    <span class="eyebrow2 mono">— HOW I WORK</span>
+    <h2 class="sec2-title">
+      <span data-reveal>From Figma to</span>
+      <span class="italic" data-reveal>production</span>
+      <span data-reveal>in one hand.</span>
+    </h2>
+  </header>
+  <div class="proc-grid">
+    <div class="proc-card" data-step="01">
+      <div class="proc-num mono">STEP 01</div>
+      <h4>Scope & design hand-off</h4>
+      <p>I get Figma, brand, goals. I plan components, motion, and edge cases in a shared doc.</p>
+    </div>
+    <div class="proc-card" data-step="02">
+      <div class="proc-num mono">STEP 02</div>
+      <h4>Build in public</h4>
+      <p>Daily Vercel previews. You see pages as they're built, not after two silent weeks.</p>
+    </div>
+    <div class="proc-card" data-step="03">
+      <div class="proc-num mono">STEP 03</div>
+      <h4>Motion & polish</h4>
+      <p>Scroll, cursor, page transitions, micro-interactions — baked in, not bolted on later.</p>
+    </div>
+    <div class="proc-card" data-step="04">
+      <div class="proc-num mono">STEP 04</div>
+      <h4>Ship & maintain</h4>
+      <p>Deploy to Vercel/Railway, set up analytics, write the docs. Then I stay on call.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STACK ===== -->
+<section class="stack2" id="stack">
+  <header class="sec2-head">
+    <span class="eyebrow2 mono">— TOOLS I REACH FOR</span>
+    <h2 class="sec2-title">
+      <span data-reveal>The</span>
+      <span class="italic" data-reveal>stack.</span>
+    </h2>
+  </header>
+  <div class="stack2-grid">
+    <div class="sk-cat">
+      <div class="sk-head mono">FRONTEND</div>
+      <div class="sk-tags">
+        <span>React</span><span>Next.js 15</span><span>TypeScript</span><span>JavaScript</span>
+        <span>Tailwind</span><span>SCSS</span><span>HTML5</span><span>CSS3</span>
+      </div>
+    </div>
+    <div class="sk-cat">
+      <div class="sk-head mono">MOTION</div>
+      <div class="sk-tags">
+        <span>GSAP</span><span>Framer Motion</span><span>Lenis</span><span>Swiper</span>
+      </div>
+    </div>
+    <div class="sk-cat">
+      <div class="sk-head mono">BACKEND</div>
+      <div class="sk-tags">
+        <span>Node.js</span><span>Express</span><span>FastAPI</span><span>Python</span>
+        <span>PostgreSQL</span><span>Firebase</span><span>Supabase</span>
+      </div>
+    </div>
+    <div class="sk-cat">
+      <div class="sk-head mono">CMS / COMMERCE</div>
+      <div class="sk-tags">
+        <span>WordPress</span><span>WooCommerce</span><span>Headless CMS</span>
+      </div>
+    </div>
+    <div class="sk-cat">
+      <div class="sk-head mono">INTEGRATIONS</div>
+      <div class="sk-tags">
+        <span>Telegram Bot API</span><span>Stripe</span><span>Socket.IO</span><span>Puppeteer</span>
+      </div>
+    </div>
+    <div class="sk-cat">
+      <div class="sk-head mono">DEVOPS</div>
+      <div class="sk-tags">
+        <span>Git</span><span>Docker Compose</span><span>Vercel</span><span>Railway</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact2" id="contact">
+  <div class="contact2-inner">
+    <div class="c2-left">
+      <span class="eyebrow2 mono">— GET IN TOUCH</span>
+      <h2 class="sec2-title">
+        <span data-reveal>Let's build</span>
+        <span class="italic" data-reveal>something</span>
+        <span data-reveal>great.</span>
+      </h2>
+      <p class="c2-sub">Remote-first, open to full-time or contract. I reply within 24 hours.</p>
+
+      <div class="c2-cards">
+        <a class="c2-card" href="mailto:atuin59354081@gmail.com" data-magnet>
+          <div class="c2-lbl mono">EMAIL</div>
+          <div class="c2-val">atuin59354081@gmail.com</div>
+          <span class="c2-arr">↗</span>
+        </a>
+        <a class="c2-card" href="https://t.me/zafarovpolat" data-magnet>
+          <div class="c2-lbl mono">TELEGRAM</div>
+          <div class="c2-val">@zafarovpolat</div>
+          <span class="c2-arr">↗</span>
+        </a>
+        <a class="c2-card" href="tel:+998959738888" data-magnet>
+          <div class="c2-lbl mono">PHONE</div>
+          <div class="c2-val">+998 95 973 88 88</div>
+          <span class="c2-arr">↗</span>
+        </a>
+        <a class="c2-card" href="https://github.com/Zafarovpolat" data-magnet>
+          <div class="c2-lbl mono">GITHUB</div>
+          <div class="c2-val">Zafarovpolat</div>
+          <span class="c2-arr">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <aside class="c2-ai">
+      <div class="ai2-head">
+        <span class="dot-live2"></span>
+        <span class="mono">POLAT.AI · LIVE</span>
+      </div>
+      <div class="ai2-log" id="ai2-log">
+        <div class="ai2-row"><span class="ai2-tag mono">POLAT.AI</span><p>Hi — I can answer anything about Polat's work, stack or availability. Try one below.</p></div>
+      </div>
+      <div class="ai2-chips">
+        <button class="ai2-chip" data-q="What's your availability?">Availability</button>
+        <button class="ai2-chip" data-q="What's your strongest stack?">Top stack</button>
+        <button class="ai2-chip" data-q="Tell me about Dekor House.">Dekor House</button>
+      </div>
+      <form class="ai2-form" id="ai2-form">
+        <input id="ai2-input" placeholder="Ask anything…" autocomplete="off" />
+        <button type="submit" class="mono">↵</button>
+      </form>
+    </aside>
+  </div>
+
+  <footer class="footer2">
+    <div>© 2026 · Polat Zafarov · Tashkent, UZ</div>
+    <div class="mono">Set in Geist & Instrument Serif</div>
+  </footer>
+</section>
+
+<!-- Tweaks panel -->
+<div id="tweaks2" class="tweaks2 hidden">
+  <div class="tw2-head">
+    <span class="mono">TWEAKS</span>
+    <button id="tw2-close">×</button>
+  </div>
+  <div class="tw2-body">
+    <label class="tw2-row">
+      <span class="mono">Accent</span>
+      <div class="tw2-sws">
+        <button data-accent="#FF5B2E" style="background:#FF5B2E"></button>
+        <button data-accent="#0066FF" style="background:#0066FF"></button>
+        <button data-accent="#111111" style="background:#111"></button>
+        <button data-accent="#7C3AED" style="background:#7C3AED"></button>
+        <button data-accent="#0EA37F" style="background:#0EA37F"></button>
+      </div>
+    </label>
+    <label class="tw2-row">
+      <span class="mono">Blur</span>
+      <input type="range" id="tw2-blur" min="0" max="200" value="120"/>
+    </label>
+    <label class="tw2-row">
+      <span class="mono">Grain</span>
+      <input type="range" id="tw2-grain" min="0" max="100" value="25"/>
+    </label>
+    <label class="tw2-row">
+      <span class="mono">Display font</span>
+      <select id="tw2-font">
+        <option value="'Geist', system-ui">Geist</option>
+        <option value="'Instrument Serif', serif">Instrument Serif</option>
+        <option value="'Geist Mono', monospace">Geist Mono</option>
+      </select>
+    </label>
+  </div>
+</div>
+
+<script src="portfolio-v2.js"></script>
+</body>
+</html>
