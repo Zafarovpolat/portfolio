@@ -179,7 +179,7 @@ section { position: relative; z-index: 1; }
 /* rotating chip inside title */
 .chip-inline {
   display: inline-flex; align-items: flex-start;
-  padding: 0.08em 0.4em;
+  padding: 0.02em 0.4em 0.14em;
   background: var(--accent);
   color: #fff;
   border-radius: 9999px;
@@ -899,7 +899,7 @@ section { position: relative; z-index: 1; }
 
 /* ===== PERF / A11Y ===== */
 @media (prefers-reduced-motion: reduce) {
-  .sparkle, .spark, .spark-x, .badge-dot, .logo3-dot, .ci-stack {
+  .sparkle, .spark, .spark-x, .badge-dot, .logo3-dot {
     animation: none !important;
   }
   /* Restore native cursor for users who prefer reduced motion */

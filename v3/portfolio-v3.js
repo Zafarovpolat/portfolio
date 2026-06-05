@@ -386,12 +386,6 @@ function setupChipRotator3() {
     stack.style.transform = `translateY(-${i}em)`;
   };
 
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) {
-    apply();
-    return;
-  }
-
   apply();
   setInterval(() => {
     i = (i + 1) % words.length;
