@@ -205,7 +205,7 @@ section { position: relative; z-index: 1; }
   white-space: nowrap;
   align-self: flex-start;
   flex: 0 0 auto;
-  transform: translateY(-0.15em);
+  transform: translateY(-0.05em);
 }
 .spark {
   color: var(--accent-2);
