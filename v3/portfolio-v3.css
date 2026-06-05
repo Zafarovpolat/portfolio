@@ -899,14 +899,6 @@ section { position: relative; z-index: 1; }
 #tw3-grad { width: 120px; accent-color: var(--accent); }
 
 /* ===== PERF / A11Y ===== */
-@media (prefers-reduced-motion: reduce) {
-  .sparkle, .spark, .spark-x, .badge-dot, .logo3-dot {
-    animation: none !important;
-  }
-  /* Restore native cursor for users who prefer reduced motion */
-  html, body, *, *::before, *::after { cursor: auto !important; }
-  .cursor3 { display: none; }
-}
 
 /* AI typing dots indicator */
 .ai-dots { display: inline-flex; gap: 4px; align-items: center; }
