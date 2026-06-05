@@ -42,7 +42,9 @@
 
 ### V3 · Modern Slider _(in progress)_
 
-> Gradient backgrounds (blue→purple), sparkles, word-rotator hero, dashboard mockup, FAQ accordion.
+> Clean SaaS-style hero with "polat.dev" branding, sparkle accents, "Book a call" CTA, FAQ accordion.
+
+![V3 Modern](docs/v3-modern.png)
 
 **[→ View V3](https://zafarovpolat.github.io/portfolio/v3/)**
 
