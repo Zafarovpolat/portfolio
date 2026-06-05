@@ -178,14 +178,13 @@ section { position: relative; z-index: 1; }
 
 /* rotating chip inside title */
 .chip-inline {
-  display: inline-flex; align-items: center;
-  justify-content: center;
-  padding: 0.1em 0.4em;
+  display: inline-flex; align-items: flex-start;
+  padding: 0.08em 0.4em;
   background: var(--accent);
   color: #fff;
   border-radius: 9999px;
   font-size: 0.85em;
-  height: 1.15em;
+  height: 1em;
   line-height: 1;
   overflow: hidden;
   position: relative;
