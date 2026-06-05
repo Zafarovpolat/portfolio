@@ -179,7 +179,7 @@ section { position: relative; z-index: 1; }
 /* rotating chip inside title */
 .chip-inline {
   display: inline-flex; align-items: flex-start;
-  padding: 0 0.4em 0.35em;
+  padding: 0.08em 0.4em;
   background: var(--accent);
   color: #fff;
   border-radius: 9999px;
@@ -205,6 +205,7 @@ section { position: relative; z-index: 1; }
   white-space: nowrap;
   align-self: flex-start;
   flex: 0 0 auto;
+  transform: translateY(-0.07em);
 }
 .spark {
   color: var(--accent-2);
