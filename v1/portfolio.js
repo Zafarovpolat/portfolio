@@ -468,24 +468,27 @@ function setupAI() {
 // Чтобы включить живую модель — поднять серверный прокси и задать
 // window.__POLAT_AI_KEY__ до загрузки этого файла.
 const POLAT_FAQ = [
-  { k: ['availab', 'free', 'busy', 'start', 'свобод', 'занят', 'когда'],
-    a: "Available for new projects — usually starts within 2–3 days. Fastest reply on Telegram: @zafarovpolat." },
+  // Порядок важен: специфичные ключи идут раньше общих.
+  { k: ['full-stack', 'fullstack', 'full stack', 'бэкенд', 'backend', 'фулстек'],
+    a: "Yes — already shipping full-stack (Node/Express, FastAPI, Prisma, PostgreSQL, MongoDB) and actively growing in that direction. Recent: a multi-tenant POS and a restaurant SaaS backend." },
   { k: ['dekor', 'декор'],
     a: "Dekor House is a Telegram Mini App store for home decor — React + Telegram SDK + Firebase, with Bot API and payments wired in. Live as @DekorHouseUzBot." },
-  { k: ['lecto', 'study', 'лекто', 'учеб'],
+  { k: ['lecto', 'лекто'],
     a: "Lecto is an AI study assistant Mini App: React 18 + FastAPI + PostgreSQL + Gemini. Upload PDF/DOCX/TXT and get smart notes, quizzes, flashcards and RAG search across your library." },
-  { k: ['stack', 'tech', 'стек', 'технолог'],
-    a: "Day to day: React, Next.js and TypeScript, with Tailwind, GSAP and Framer Motion for motion. Backend: Node/Express and FastAPI, PostgreSQL, Firebase and Supabase." },
-  { k: ['full-stack', 'fullstack', 'full stack', 'бэкенд', 'backend'],
-    a: "Yes — already shipping full-stack (Node/Express, FastAPI, Prisma, PostgreSQL) and actively growing in that direction." },
-  { k: ['rate', 'price', 'cost', 'salary', 'цена', 'стоим', 'зарплат', 'ставк'],
-    a: "Rate depends on scope — landings start small, product work is quoted per project. Write to @zafarovpolat with your brief for a precise number." },
-  { k: ['contact', 'reach', 'email', 'связ', 'контакт', 'написать'],
+  { k: ['availab', 'free now', 'busy', 'when can you', 'свобод', 'занят', 'когда'],
+    a: "Available for new projects — usually starts within 2–3 days. Fastest reply on Telegram: @zafarovpolat." },
+  { k: ['rate', 'price', 'cost', 'salary', 'budget', 'charge', 'how much', 'quote', 'цена', 'стоим', 'зарплат', 'ставк', 'бюджет', 'сколько сто'],
+    a: "Depends on scope — landings start small, product work is quoted per project. Send a brief to @zafarovpolat for a precise number." },
+  { k: ['contact', 'reach', 'email', 'hire', 'связ', 'контакт', 'написать', 'нанять'],
     a: "Email atuin59354081@gmail.com or Telegram @zafarovpolat — Telegram is fastest." },
-  { k: ['experience', 'year', 'опыт', 'лет'],
+  { k: ['experience', 'how long', 'years', 'опыт', 'сколько лет'],
     a: "2+ years commercial. 30+ shipped projects for clients across Uzbekistan, Russia and Azerbaijan — landings, e-commerce, corporate sites and Telegram Mini Apps." },
-  { k: ['project', 'work', 'portfolio', 'проект', 'работ'],
-    a: "Highlights: FUTURA Architects, Electro New Tech, Dekor House Mini App, Lecto AI, plus a multi-tenant POS and a restaurant SaaS. Scroll up to the WORK section for case studies." }
+  { k: ['animation', 'gsap', 'framer', 'motion', 'анимац'],
+    a: "Motion is a specialty: GSAP with ScrollTrigger, Framer Motion, Lenis smooth scroll — plus a hand-rolled 3D point-cloud engine on plain canvas in the Plenum build." },
+  { k: ['stack', 'technolog', 'tools', 'стек', 'технолог'],
+    a: "Day to day: React, Next.js and TypeScript, with Tailwind, GSAP and Framer Motion for motion. Backend: Node/Express and FastAPI, PostgreSQL, Firebase and Supabase." },
+  { k: ['project', 'portfolio', 'case', 'work', 'проект', 'работ', 'кейс'],
+    a: "Highlights: FUTURA Architects, Dekor House Mini App, Lecto AI, a restaurant SaaS and a multi-tenant POS. Scroll up to the WORK section for case studies." }
 ];
 function polatLocalAnswer(q) {
   const s = (q || '').toLowerCase();
