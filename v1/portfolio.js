@@ -702,9 +702,10 @@ setTimeout(boot, 1500);
 
 
 // Честный статус: не показываем "online", когда живой модели нет.
+// Проверяем window напрямую — const выше живёт в замыкании и снаружи не виден.
 (function () {
   function markOffline() {
-    if (GEMINI_API_KEY) return;
+    if (typeof window !== 'undefined' && window.__POLAT_AI_KEY__) return;
     document.querySelectorAll('.ai-side-head span').forEach(function (el) {
       if (/POLAT\.AI/i.test(el.textContent)) el.textContent = 'POLAT.AI // offline mode';
     });
