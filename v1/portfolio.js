@@ -701,23 +701,22 @@ if (document.readyState === 'loading') {
 setTimeout(boot, 1500);
 
 
-// Честный статус: не показываем "online", когда живой модели нет.
-// Проверяем window напрямую — const выше живёт в замыкании и снаружи не виден.
+// Статус концьержа. По умолчанию разметка показывает offline —
+// если ключ задан через window.__POLAT_AI_KEY__, возвращаем живой вид.
 (function () {
-  function markOffline() {
-    if (typeof window !== 'undefined' && window.__POLAT_AI_KEY__) return;
+  function sync() {
+    var live = typeof window !== 'undefined' && !!window.__POLAT_AI_KEY__;
     document.querySelectorAll('.ai-side-head span').forEach(function (el) {
-      if (/POLAT\.AI/i.test(el.textContent)) el.textContent = 'POLAT.AI // offline mode';
+      if (/POLAT\.AI/i.test(el.textContent)) {
+        el.textContent = live ? 'POLAT.AI // online' : 'POLAT.AI // offline mode';
+      }
     });
     document.querySelectorAll('.dot-live').forEach(function (d) {
-      d.style.background = '#8E8678';
-      d.style.boxShadow = 'none';
-      d.style.animation = 'none';
+      d.style.background = live ? '' : '#8E8678';
+      d.style.boxShadow = live ? '' : 'none';
+      d.style.animation = live ? '' : 'none';
     });
   }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', markOffline);
-  } else {
-    markOffline();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', sync);
+  else sync();
 })();
