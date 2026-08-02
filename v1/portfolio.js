@@ -702,10 +702,21 @@ setTimeout(boot, 1500);
 
 
 // Честный статус: не показываем "online", когда живой модели нет.
-document.addEventListener('DOMContentLoaded', function () {
-  if (GEMINI_API_KEY) return;
-  document.querySelectorAll('.ai-side-head span:not(.dot-live)').forEach(function (el) {
-    if (/POLAT\.AI/i.test(el.textContent)) el.textContent = 'POLAT.AI // offline mode';
-  });
-  document.querySelectorAll('.dot-live').forEach(function (d) { d.style.background = '#8E8678'; d.style.boxShadow = 'none'; });
-});
+(function () {
+  function markOffline() {
+    if (GEMINI_API_KEY) return;
+    document.querySelectorAll('.ai-side-head span').forEach(function (el) {
+      if (/POLAT\.AI/i.test(el.textContent)) el.textContent = 'POLAT.AI // offline mode';
+    });
+    document.querySelectorAll('.dot-live').forEach(function (d) {
+      d.style.background = '#8E8678';
+      d.style.boxShadow = 'none';
+      d.style.animation = 'none';
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', markOffline);
+  } else {
+    markOffline();
+  }
+})();
