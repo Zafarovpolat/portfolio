@@ -198,7 +198,42 @@ function typeText3(el, text, speed = 18) {
 }
 
 // AI — real Gemini, same wiring as v1/v2
-const GEMINI_API_KEY_V3 = 'AIzaSyDBkXSCP-OQE2ApCtvhmcFZyb_6WyT2vfs';
+
+// --- Офлайн-режим концьержа -------------------------------------------------
+// Ключ намеренно НЕ хранится в клиентском коде: любой открывший DevTools
+// увидел бы его. Прежний ключ утёк именно так и был заблокирован Google.
+// Чтобы включить живую модель — поднять серверный прокси и задать
+// window.__POLAT_AI_KEY__ до загрузки этого файла.
+const POLAT_FAQ = [
+  { k: ['availab', 'free', 'busy', 'start', 'свобод', 'занят', 'когда'],
+    a: "Available for new projects — usually starts within 2–3 days. Fastest reply on Telegram: @zafarovpolat." },
+  { k: ['dekor', 'декор'],
+    a: "Dekor House is a Telegram Mini App store for home decor — React + Telegram SDK + Firebase, with Bot API and payments wired in. Live as @DekorHouseUzBot." },
+  { k: ['lecto', 'study', 'лекто', 'учеб'],
+    a: "Lecto is an AI study assistant Mini App: React 18 + FastAPI + PostgreSQL + Gemini. Upload PDF/DOCX/TXT and get smart notes, quizzes, flashcards and RAG search across your library." },
+  { k: ['stack', 'tech', 'стек', 'технолог'],
+    a: "Day to day: React, Next.js and TypeScript, with Tailwind, GSAP and Framer Motion for motion. Backend: Node/Express and FastAPI, PostgreSQL, Firebase and Supabase." },
+  { k: ['full-stack', 'fullstack', 'full stack', 'бэкенд', 'backend'],
+    a: "Yes — already shipping full-stack (Node/Express, FastAPI, Prisma, PostgreSQL) and actively growing in that direction." },
+  { k: ['rate', 'price', 'cost', 'salary', 'цена', 'стоим', 'зарплат', 'ставк'],
+    a: "Rate depends on scope — landings start small, product work is quoted per project. Write to @zafarovpolat with your brief for a precise number." },
+  { k: ['contact', 'reach', 'email', 'связ', 'контакт', 'написать'],
+    a: "Email atuin59354081@gmail.com or Telegram @zafarovpolat — Telegram is fastest." },
+  { k: ['experience', 'year', 'опыт', 'лет'],
+    a: "2+ years commercial. 30+ shipped projects for clients across Uzbekistan, Russia and Azerbaijan — landings, e-commerce, corporate sites and Telegram Mini Apps." },
+  { k: ['project', 'work', 'portfolio', 'проект', 'работ'],
+    a: "Highlights: FUTURA Architects, Electro New Tech, Dekor House Mini App, Lecto AI, plus a multi-tenant POS and a restaurant SaaS. Scroll up to the WORK section for case studies." }
+];
+function polatLocalAnswer(q) {
+  const s = (q || '').toLowerCase();
+  for (const item of POLAT_FAQ) {
+    if (item.k.some(w => s.includes(w))) return item.a;
+  }
+  return "I'm running in offline mode — the live model isn't connected right now. Try one of the quick questions on the left, or reach Polat directly: atuin59354081@gmail.com / @zafarovpolat.";
+}
+// ---------------------------------------------------------------------------
+
+const GEMINI_API_KEY_V3 = (typeof window !== 'undefined' && window.__POLAT_AI_KEY__) || '';
 const GEMINI_URL_V3 = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${GEMINI_API_KEY_V3}`;
 
 const aiCtx3 = `You are "Polat.AI" — a live concierge embedded on Polat Zafarov's portfolio. Always answer in the same language the visitor uses (English / Russian / Uzbek). First-person about Polat ("Polat has…", "He's built…"). Be friendly, confident, concrete. Keep answers to 1–3 crisp sentences unless the question explicitly asks for detail.
@@ -293,6 +328,7 @@ function setupAI3() {
     await addRowTyped('user', q, 14);
     const loadingRow = addRowLoading();
     let text = '';
+    if (!GEMINI_API_KEY_V3) { text = polatLocalAnswer(q); } else
     try {
       const res = await fetch(GEMINI_URL_V3, {
         method: 'POST',
@@ -309,7 +345,7 @@ function setupAI3() {
       if (!text) throw new Error('empty response');
     } catch (e) {
       console.error('Gemini error:', e);
-      text = "I can't reach my brain right now — try again in a minute, or ping Polat directly at atuin59354081@gmail.com / @zafarovpolat.";
+      text = polatLocalAnswer(q);
     }
     const msgEl = loadingRow.querySelector('p');
     msgEl.innerHTML = '';
@@ -411,4 +447,14 @@ window.addEventListener('load', () => {
   setupAI3();
   setupTweaks3();
   setupChipRotator3();
+});
+
+
+// Честный статус: не показываем "online", когда живой модели нет.
+document.addEventListener('DOMContentLoaded', function () {
+  if (GEMINI_API_KEY_V3) return;
+  document.querySelectorAll('.ai-side-head span:not(.dot-live)').forEach(function (el) {
+    if (/POLAT\.AI/i.test(el.textContent)) el.textContent = 'POLAT.AI // offline mode';
+  });
+  document.querySelectorAll('.dot-live').forEach(function (d) { d.style.background = '#8E8678'; d.style.boxShadow = 'none'; });
 });
